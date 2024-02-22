@@ -10,9 +10,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -42,12 +47,20 @@ public class Ventana extends JFrame {
         this.setLocationRelativeTo(null);
 
         // Llamo la función para iniciar el panel
-        this.login();
-        registro();
+        this.iniciarComponentes();
+
         
         
      // Modifica la visibilidad
         this.setVisible(true);
+    }
+    
+    
+    
+    public void iniciarComponentes() {
+    	//login();
+    	//registro();
+    	admin();
     }
 
     // Método para crear el panel
@@ -155,10 +168,12 @@ public class Ventana extends JFrame {
         botonDenegar.setOpaque(false);
         registro.add(botonDenegar);
         
+        //botones de preferencia
         ButtonGroup terminosBoton = new ButtonGroup();
         terminosBoton.add(botonAceptar);
         terminosBoton.add(botonDenegar);
         
+        //arreglo de locaciones y combobox
         String locacionesArreglo[]={"Centro","Camino Real","Pedregal"};
         JComboBox locaciones = new JComboBox(locacionesArreglo);
         locaciones.setBounds(650,650,150,20);
@@ -166,7 +181,7 @@ public class Ventana extends JFrame {
         
 
         
-        add(registro);
+        this.add(registro);
 
         
         
@@ -229,10 +244,101 @@ public class Ventana extends JFrame {
     boton.setLocation(135, 350);
     login.add(boton);
     
-    add(login);
+    this.add(login);
     }
 
-    
-    
+    public void admin() {
+    	
+    	//
+    	JPanel admin_panel = new JPanel();
+    	admin_panel.setLayout(null);
+    	admin_panel.setSize(getWidth() / 2, getHeight());
+    	admin_panel.setBackground(Color.decode("#FFEF5E"));
+    	
+    	//menu
+    	JMenuBar barra = new JMenuBar();
+    	//texto que se muestra en la opcion de el menu
+    	JMenu menu_file = new JMenu("Archivo");    	
+    	//opciones que se muestran en el menu
+    	JMenuItem open_item = new JMenuItem("abrir archivo...");
+    	JMenuItem create_item = new JMenuItem("crear archivo...");
+    	
+    	//añadir cada cosa correspondiente al menu
+    	barra.add(menu_file);
+    	menu_file.add(open_item);
+    	menu_file.add(create_item);
+    	
+    	JLabel users_tag = new JLabel("Usuarios",0);
+    	users_tag.setSize(300, 80);
+    	users_tag.setLocation(350,20);
+    	users_tag.setFont(new Font("Arial", Font.BOLD, 24));
+    	users_tag.setForeground(Color.white);
+    	users_tag.setOpaque(true);
+    	users_tag.setBackground(Color.black);
+    	admin_panel.add(users_tag);
+        
+        
+        //widget y datos de el widget
+        JLabel title_widget = new JLabel("Total de Usuarios",0);
+        title_widget.setBounds(40,130,300,40);
+        title_widget.setFont(new Font("Arial", Font.BOLD, 16));
+        title_widget.setForeground(Color.white);
+        title_widget.setOpaque(true);
+        title_widget.setBackground(Color.black);
+        admin_panel.add(title_widget);
+   
+        JLabel number_widget = new JLabel("100",0);
+        number_widget.setBounds(40,170,300,40);
+        number_widget.setFont(new Font("Arial", Font.BOLD, 32));
+        number_widget.setForeground(Color.white);
+        number_widget.setOpaque(true);
+        number_widget.setBackground(Color.black);
+        admin_panel.add(number_widget);
+        
+        JLabel widget = new JLabel(" ");
+        widget.setBounds(40,120,300,100);
+        widget.setOpaque(true);
+        widget.setBackground(Color.black);
+        admin_panel.add(widget);
+        
+        //botones
+        JButton download = new JButton("Descargar"); 
+        download.setBounds(700, 240, 100, 40);
+        admin_panel.add(download);
+        JButton add_user = new JButton("Agregar Usuario"); 
+        add_user.setBounds(810, 240, 150, 40);
+        admin_panel.add(add_user);
+        
+     
+    	
+    	String titulos[]= {"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"};
+    	String table_data[][]= {{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	{"No.Control","Nombre","Apellidos","Semestre","Promedio","Acciones"},
+    	};
+    	
+    						
+
+    	
+    	JTable table_users = new JTable(table_data,titulos);
+    	JScrollPane table_scroll = new JScrollPane(table_users);
+    	table_scroll.setBounds(40, 280, 920, 100);
+    	table_scroll.setOpaque(true);
+    	admin_panel.add(table_scroll);
+    	
+    	
+    	
+    	
+    	this.setJMenuBar(barra);
+    	
+    	this.add(admin_panel);
+    }
 }
 
