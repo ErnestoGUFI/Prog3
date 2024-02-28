@@ -1,12 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -62,12 +65,84 @@ public class Ventana extends JFrame {
    
    
     public void iniciarComponentes() {
-    login();
+    //login();
     //registro();
     //admin();
+    calculadora();
     }
 
-    // Método para crear el panel
+    public void calculadora() {
+       
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
+        panelPrincipal.setSize(this.getWidth(), this.getHeight());
+        panelPrincipal.setBackground(Color.blue);
+
+        
+        JPanel panelSuperior = new JPanel();
+        panelSuperior.setLayout(new BorderLayout());
+
+        
+        JTextField display = new JTextField();
+        display.setFont(new Font("Arial", Font.PLAIN, 48));
+        panelSuperior.add(display, BorderLayout.NORTH);
+
+        
+        JPanel panelFlow = new JPanel();
+        panelFlow.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+        String btnsFlow[] = {"MC", "M+", "/", "*"};
+        for (int i = 0; i < 4; i++) {
+            JButton boton = new JButton(btnsFlow[i]); 
+            boton.setPreferredSize(new Dimension(246, 50));
+            boton.setBackground(Color.BLACK);
+            boton.setForeground(Color.WHITE);
+            panelFlow.add(boton);
+        }
+        panelSuperior.add(panelFlow, BorderLayout.CENTER);
+
+        panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
+
+        
+       
+        JPanel panelBotones = new JPanel();
+        panelBotones.setLayout(new GridLayout(4, 3, 0, 0));
+
+        String btns[] = {"7", "8", "9", "6", "5", "4", "3", "2", "1", "0", ".", "/"};
+        for (int i = 0; i < 12; i++) {
+            JButton boton = new JButton(btns[i]);
+            boton.setBackground(Color.gray);
+            boton.setForeground(Color.WHITE);
+            panelBotones.add(boton);
+        }
+        panelPrincipal.add(panelBotones, BorderLayout.CENTER);
+        
+        
+        
+        JPanel panelVerticalDerecha = new JPanel();
+        panelVerticalDerecha.setLayout(new BoxLayout(panelVerticalDerecha, BoxLayout.Y_AXIS));
+
+        
+        String btnsBox[] = {"+", "-", "=", "="};
+        for (int i = 0; i < 4; i++) {
+            JButton boton = new JButton(btnsFlow[i]);
+            boton.setPreferredSize(new Dimension(75,200));
+            panelVerticalDerecha.add(boton);
+        }
+
+        panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
+        panelPrincipal.add(panelVerticalDerecha, BorderLayout.EAST);
+        this.add(panelPrincipal);
+    }
+
+    
+    
+   
+   
+   
+   
+   
+    
     
    
     public void login() {
