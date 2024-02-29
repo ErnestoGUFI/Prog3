@@ -68,9 +68,135 @@ public class Ventana extends JFrame {
     //login();
     //registro();
     //admin();
-    calculadora();
+    //calculadora();
+    	interes();
+    }
+    
+    
+    public void interes()
+    {
+    JPanel panel = new JPanel();
+		panel.setSize(this.getWidth(),this.getHeight());
+		panel.setBackground(Color.white);
+		panel.setLayout( new BorderLayout());
+		
+		//panel de datos verde
+		JLabel verde = new JLabel();
+		verde.setOpaque(true);
+		verde.setPreferredSize(new Dimension(200,300));
+		verde.setBackground(Color.decode("#7DDA58"));
+		verde.setFont(new Font ("calibri",Font.BOLD,30));
+		verde.setBorder(BorderFactory.createLineBorder(Color.white,20));
+		panel.add(verde, BorderLayout.CENTER);
+		
+		//panel de datos rojo
+		JLabel rojo = new JLabel();
+		rojo.setOpaque(true);
+		rojo.setPreferredSize(new Dimension(200,300));
+		rojo.setBackground(Color.red);
+		rojo.setBorder(BorderFactory.createLineBorder(Color.white,20));
+		panel.add(rojo, BorderLayout.SOUTH);
+		
+		//Calcular interes Label
+		JLabel calcularInteres = new JLabel("Calcular interés: ");
+		calcularInteres.setBounds(325,25,350,50);
+		calcularInteres.setForeground(Color.WHITE);
+		calcularInteres.setFont(new Font ("Arial Black", Font.ITALIC, 36));
+		
+		verde.add(calcularInteres);
+		
+		//Capital Label
+		JLabel capital = new JLabel("Capital: ");
+		capital.setBounds(70,80,180,40);
+		capital.setFont(new Font ("Arial Black", Font.BOLD, 24));
+		capital.setForeground(Color.black);
+		verde.add(capital);
+		
+		//textfield de capital
+		JTextField escribeCapital = new JTextField();
+		escribeCapital.setBounds(350,90,200,25);
+		escribeCapital.setOpaque(true);
+		escribeCapital.setBackground(Color.white);
+		verde.add(escribeCapital);
+		
+		//label de tiempo
+		JLabel tiempo = new JLabel("Tiempo: ");
+		tiempo.setBounds(70,140,180,40);
+		tiempo.setFont(new Font ("Arial Black", Font.ITALIC, 24));
+		tiempo.setForeground(Color.black);
+		verde.add(tiempo);
+		
+		//textfield de tiempo
+		JTextField typeTime = new JTextField();
+		typeTime.setBounds(350,150,200,25);
+		typeTime.setOpaque(true);
+		typeTime.setBackground(Color.white);
+		verde.add(typeTime);
+		
+		//tasa de interes label
+		JLabel tasaInteres = new JLabel("Tasa de interés: ");
+		tasaInteres.setBounds(70,200,300,40);
+		tasaInteres.setFont(new Font ("Arial Black",Font.ITALIC,24));
+		tasaInteres.setForeground(Color.black);
+		verde.add(tasaInteres);
+		
+		//textfield de interes
+		JTextField interes = new JTextField();
+		interes.setBounds(350,210,200,25);
+		interes.setOpaque(true);
+		interes.setBackground(Color.white);
+		verde.add(interes);
+		
+		//InterestText Label
+		JLabel textoInteres = new JLabel("INTERES",0);
+		textoInteres.setFont(new Font ("Arial Black",Font.ITALIC,48));
+		textoInteres.setForeground(Color.cyan);
+		textoInteres.setBounds(100,100,100,100);
+		panel.add(textoInteres, BorderLayout.NORTH);
+		
+		//Boton de calcular
+		JButton calcular = new JButton("Calcular");
+		calcular.setBounds(300, 300, 150, 40);
+		verde.add(calcular);
+		
+		//Boton de cancelar
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.setOpaque(true);
+		cancelar.setBounds(500, 300, 150, 40);
+		verde.add(cancelar);
+		
+		//label de interes
+		JLabel interes2 = new JLabel("Interés: ");
+		interes2.setBounds(70,80,180,40);
+		interes2.setFont(new Font ("Arial Black", Font.ITALIC, 24));
+		interes2.setForeground(Color.black);
+		rojo.add(interes2);
+		
+		//textfield de interes
+		JTextField textInteres = new JTextField();
+		textInteres.setBounds(350,90,200,25);
+		textInteres.setOpaque(true);
+		textInteres.setBackground(Color.white);
+		rojo.add(textInteres);
+		
+		//label de monto
+		JLabel monto = new JLabel("Monto: ");
+		monto.setBounds(70,140,180,40);
+		monto.setFont(new Font ("Arial Black", Font.ITALIC, 24));
+		monto.setForeground(Color.black);
+		rojo.add(monto);
+		
+		//textfield de cantidad
+		JTextField cantidad = new JTextField();
+		cantidad.setBounds(350,150,200,25);
+		cantidad.setOpaque(true);
+		cantidad.setBackground(Color.white);
+		rojo.add(cantidad);
+		
+		this.add(panel);
     }
 
+    
     public void calculadora() {
        
         JPanel panelPrincipal = new JPanel();
