@@ -69,8 +69,193 @@ public class Ventana extends JFrame {
     //registro();
     //admin();
     //calculadora();
-    	interes();
+    	//interes();
+    	registroDeUsuarios();
     }
+    
+    public void registroDeUsuarios() {
+    	JPanel panelCentral = new JPanel(); 
+        panelCentral.setLayout(new BorderLayout());
+
+        JLabel titulo = new JLabel("Registro De Usuarios");
+        panelCentral.add(titulo,BorderLayout.NORTH);
+        
+        JLabel panelNuevo = new JLabel();
+        panelNuevo.setLayout(new GridLayout(2, 2)); 
+        panelNuevo.setOpaque(true);
+        panelCentral.add(panelNuevo,BorderLayout.CENTER);
+
+        //PANEL DE DATOS GENERALES
+        JLabel datosGenerales = new JLabel();
+        datosGenerales.setLayout(null);
+        datosGenerales.setOpaque(true);
+        datosGenerales.setBackground(Color.decode("#A1F375"));
+        datosGenerales.setBorder(BorderFactory.createLineBorder(Color.white,10));
+        panelNuevo.add(datosGenerales);
+        
+        JLabel tituloDatos = new JLabel("Datos Generales");
+        tituloDatos.setBounds(20,-30,100,100);
+        datosGenerales.add(tituloDatos,BorderLayout.NORTH);
+        
+        //RELACIONADO A NOMBRE
+        JLabel nombresLabel = new JLabel("Nombres:");
+        nombresLabel.setBounds(50,40,100,100); 
+        datosGenerales.add(nombresLabel);
+        
+	        JTextField nombresText = new JTextField();
+	        nombresText.setBounds(200,75,150,30); 
+	        datosGenerales.add(nombresText);
+        
+        //RELACIONADO A APELLIDO PATERNO
+        JLabel apellidoPLabel = new JLabel("Apellido Paterno:");
+        apellidoPLabel.setBounds(50,80,100,100); 
+        datosGenerales.add(apellidoPLabel);
+        
+	        JTextField apellidoPText = new JTextField();
+	        apellidoPText.setBounds(200,115,150,30); 
+	        datosGenerales.add(apellidoPText);
+        
+        //RELACIONADO A APELLIDO MATERNO
+        JLabel apellidoMLabel = new JLabel("Apellido Materno:");
+        apellidoMLabel.setBounds(50,120,150,100); 
+        datosGenerales.add(apellidoMLabel);
+        
+	        JTextField apellidoMText = new JTextField();
+	        apellidoMText.setBounds(200,155,150,30); 
+	        datosGenerales.add(apellidoMText);
+	        
+	     //RELACIONADO A FECHA DE NACIMIENTO
+	     JLabel fechaNacimieto = new JLabel("Fecha de nacimiento:");
+	     fechaNacimieto.setBounds(50,160,150,100); 
+	     datosGenerales.add(fechaNacimieto);
+	        	
+	        JTextField fechaNacimientoText = new JTextField();
+	        fechaNacimientoText.setBounds(200,195,100,30); 
+	        datosGenerales.add(fechaNacimientoText);
+        
+        //RELACIONADO A SEXO
+        JLabel sexo = new JLabel("Sexo:");
+        sexo.setBounds(50,200,100,100); 
+        datosGenerales.add(sexo);
+        
+	        JRadioButton masculinoRadioButton = new JRadioButton("Masculino");
+	        masculinoRadioButton.setBounds(150, 235, 100, 30);
+	        masculinoRadioButton.setOpaque(false);
+	        datosGenerales.add(masculinoRadioButton);
+	
+	        JRadioButton femeninoRadioButton = new JRadioButton("Femenino");
+	        femeninoRadioButton.setBounds(150, 265, 100, 30); 
+	        femeninoRadioButton.setOpaque(false);
+	        datosGenerales.add(femeninoRadioButton);
+	        
+	        ButtonGroup grupoSexo = new ButtonGroup();
+	        grupoSexo.add(masculinoRadioButton);
+	        grupoSexo.add(femeninoRadioButton);
+        
+        //RELACIONADO A NACIONALIDAD
+        JLabel nacionalidad = new JLabel("Nacionalidad:");
+        nacionalidad.setBounds(50,290,100,100); 
+        datosGenerales.add(nacionalidad);
+        
+	        String[] nacionalidades = {"Mexicana", "Estadounidense", "Canadiense", "Española", "Colombiana"};
+	        JComboBox nacionalidadComboBox = new JComboBox(nacionalidades);
+	        nacionalidadComboBox.setBounds(200, 325, 150, 30); 
+	        datosGenerales.add(nacionalidadComboBox); 
+
+        
+        JLabel perfilDeUsuario = new JLabel();
+        perfilDeUsuario.setOpaque(true);
+        perfilDeUsuario.setBackground(Color.decode("#F18888"));
+        perfilDeUsuario.setBorder(BorderFactory.createLineBorder(Color.white,10));
+        
+        JLabel tituloPerfil = new JLabel("Perfil De Usuario");
+        tituloPerfil.setBounds(20,-30,100,100);
+        perfilDeUsuario.add(tituloPerfil,BorderLayout.NORTH);
+        
+	        //IMAGEN DE PERFIL
+	        ImageIcon foto = new ImageIcon(getClass().getResource("profile.png"));
+	        JLabel fotoLabel = new JLabel(foto);
+	        fotoLabel.setBounds(175,70,128,128);
+	        fotoLabel.setOpaque(false);
+	        perfilDeUsuario.add(fotoLabel);
+	
+	        //CHECKBOXES
+	        JCheckBox mostrarFecha = new JCheckBox("Mostrar fecha de nacimiento");
+	        mostrarFecha.setBounds(150,250,250,10);
+	        mostrarFecha.setOpaque(false);
+	        perfilDeUsuario.add(mostrarFecha);
+	        
+	        JCheckBox fotoMostrar = new JCheckBox("Mostrar foto de perfil");
+	        fotoMostrar.setBounds(150,280,250,10);
+	        fotoMostrar.setOpaque(false);
+	        perfilDeUsuario.add(fotoMostrar);
+
+	        panelNuevo.add(perfilDeUsuario);
+
+        JLabel datosOpcionales = new JLabel();
+        datosOpcionales.setOpaque(true);
+        datosOpcionales.setBackground(Color.YELLOW);
+        datosOpcionales.setBorder(BorderFactory.createLineBorder(Color.white,10));
+        
+        JLabel tituloOpcionales = new JLabel("Datos Opcionales");
+        tituloOpcionales.setBounds(20,-30,100,100);
+        datosOpcionales.add(tituloOpcionales,BorderLayout.NORTH);
+       
+        String[] columnas = {"Preferencia"};
+        Object[][] datos = {
+            {"Preferencia 1"},
+            {"Preferencia 2"},
+            {"Preferencia 3"},
+            {"Preferencia 4"},
+            {"Preferencia 5"},
+            {"Preferencia 6"},
+            {"Preferencia 7"},
+            {"Preferencia 8"},
+        };
+        
+        JTable tablaPref = new JTable(datos,columnas);
+        JScrollPane tablaScroll = new JScrollPane(tablaPref);
+        tablaScroll.setBounds(300, 150, 100, 100);
+        tablaScroll.setOpaque(true);
+        datosOpcionales.add(tablaScroll);
+       
+       JTextField descripcion = new JTextField();
+       JScrollPane scrollDescripcion = new JScrollPane(descripcion);
+       scrollDescripcion.setBounds(100, 150, 100, 100);
+       scrollDescripcion.setOpaque(true);
+       datosOpcionales.add(scrollDescripcion);
+
+       panelNuevo.add(datosOpcionales);
+ 
+
+        JLabel botones = new JLabel();
+        botones.setOpaque(true);
+        botones.setBackground(Color.ORANGE);
+        botones.setBorder(BorderFactory.createLineBorder(Color.white,10));
+        
+        JButton nuevo = new JButton("Nuevo");
+        nuevo.setBounds(200,100,100,30);
+        botones.add(nuevo);
+        
+        JButton guardar = new JButton("Guardar");
+        guardar.setBounds(200,150,100,30);
+        botones.add(guardar);
+        
+        JButton salir = new JButton("Salir");
+        salir.setBounds(200,200,100,30);
+        botones.add(salir);
+        		
+        
+
+        
+      
+        panelNuevo.add(botones);
+
+       
+        this.add(panelCentral);
+    }
+
+
     
     
     public void interes()
@@ -483,6 +668,8 @@ public class Ventana extends JFrame {
    
     this.add(admin_panel);
     }
+    
+   
     
     public void registro() {
         
