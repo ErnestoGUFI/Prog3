@@ -1,11 +1,17 @@
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -69,9 +75,57 @@ public class Ventana extends JFrame {
     //registro();
     //admin();
     //calculadora();
-    	//interes();
-    	registroDeUsuarios();
+    //interes();
+    //registroDeUsuarios();
     }
+    
+    public void paint(Graphics g)
+    {
+    	super.paint(g);
+    	
+    	Graphics2D g2d =(Graphics2D) g;
+    	g2d.setColor(Color.BLUE);
+    	g2d.drawLine(10, 70, 770, 70);
+    	
+    	g2d.fillRect(50,50,200,100);
+    	g2d.clearRect(100, 100, 100, 100);
+    	
+    	g2d.fillArc(300, 300, 100, 100, 45, 100);
+    	g2d.drawArc(320, 200, 100, 100, 45, 100);
+    	
+    	g2d.setColor(Color.BLACK);
+    	
+    	g2d.drawLine(0, 0, 500, 500);
+    	
+    	g2d.drawOval(400,400,50,80);
+    	g2d.fillOval(350, 400, 50, 80);
+    	
+    	int xPoints[] = {100,250,300};
+    	int yPoints[] = {100,200,350};
+    	
+    	g2d.setColor(Color.red);
+    	
+    	g2d.fillPolygon(xPoints,yPoints,3);
+    	
+    	g2d.setStroke(new BasicStroke(10));
+    	g2d.drawRoundRect(420, 150, 200, 150, 10, 10);
+    	
+    	try {
+    	BufferedImage image = ImageIO.read(new File("src/profile.png"));
+    	g2d.drawImage(image,0,0,null);
+    	}
+    	catch(IOException e) {
+    		e.printStackTrace();
+    	}
+    			
+    	
+    	
+    	
+    	
+    	
+    }
+    	
+     
     
     public void registroDeUsuarios() {
     	JPanel panelCentral = new JPanel(); 
