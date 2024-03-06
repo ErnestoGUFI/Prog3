@@ -1,4 +1,3 @@
-import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,9 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -75,57 +71,72 @@ public class Ventana extends JFrame {
     //registro();
     //admin();
     //calculadora();
-    //interes();
-    //registroDeUsuarios();
+    	//interes();
+    	
     }
     
-    public void paint(Graphics g)
-    {
-    	super.paint(g);
-    	
-    	Graphics2D g2d =(Graphics2D) g;
-    	g2d.setColor(Color.BLUE);
-    	g2d.drawLine(10, 70, 770, 70);
-    	
-    	g2d.fillRect(50,50,200,100);
-    	g2d.clearRect(100, 100, 100, 100);
-    	
-    	g2d.fillArc(300, 300, 100, 100, 45, 100);
-    	g2d.drawArc(320, 200, 100, 100, 45, 100);
-    	
-    	g2d.setColor(Color.BLACK);
-    	
-    	g2d.drawLine(0, 0, 500, 500);
-    	
-    	g2d.drawOval(400,400,50,80);
-    	g2d.fillOval(350, 400, 50, 80);
-    	
-    	int xPoints[] = {100,250,300};
-    	int yPoints[] = {100,200,350};
-    	
-    	g2d.setColor(Color.red);
-    	
-    	g2d.fillPolygon(xPoints,yPoints,3);
-    	
-    	g2d.setStroke(new BasicStroke(10));
-    	g2d.drawRoundRect(420, 150, 200, 150, 10, 10);
-    	
-    	try {
-    	BufferedImage image = ImageIO.read(new File("src/profile.png"));
-    	g2d.drawImage(image,0,0,null);
-    	}
-    	catch(IOException e) {
-    		e.printStackTrace();
-    	}
-    			
-    	
-    	
-    	
-    	
-    	
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        //casa
+        g2d.setColor(Color.decode("#FFD562"));
+        g2d.fillRect(75, 190, 250, 150);
+        
+        g2d.setColor(Color.decode("#724F00"));
+        for (int i = 0; i < 10; i++) {
+            g2d.fillRect(75, 190 + i * 20, 250, 3);
+        }
+        
+        g2d.setColor(Color.gray);
+        g2d.fillRect(230, 120, 50, 50);
+        
+        //techo
+        int[] xPoints = {50, 150, 350};
+        int[] yPoints = {200, 100, 200};
+        g2d.setColor(Color.decode("#B10B1C"));
+        g2d.fillPolygon(xPoints, yPoints, 3);
+        
+        //puerta
+        g2d.setColor(Color.decode("#674A00"));
+        g2d.fillRect(115, 230, 65, 100);
+        g2d.setColor(Color.decode("#9F6E00"));
+        g2d.fillRect(120, 235, 55, 90);
+        
+        g2d.setColor(Color.decode("#DAA520"));
+        g2d.fillOval(160, 280, 10, 10);
+        
+        //ventana
+        g2d.setColor(Color.decode("#B10B1C"));
+        g2d.fillRect(235, 235, 60, 60);
+        g2d.setColor(Color.white);
+        g2d.fillRect(240, 240, 50, 50);
+        
+        // Detalles de la ventana
+        g2d.setColor(Color.decode("#B10B1C"));
+        g2d.drawLine(265, 240, 265, 290);
+        g2d.drawLine(240, 265, 290, 265);
+        
+        g2d.setColor(Color.DARK_GRAY);
+        g2d.fillRect(233, 295, 65, 10);
+        
+        //base de la casa
+        g2d.setColor(Color.gray);
+        g2d.fillRect(70, 330, 260, 50);
+
+        //suelo
+        g2d.setColor(Color.decode("#354D00"));
+        g2d.fillRect(0, 350, 520, 50);
+        
+        //valla
+        g2d.setColor(Color.decode("#964B00"));
+        g2d.fillRect(0, 320, 500, 5);
+        for (int i = 0; i < 10; i++) {
+            g2d.fillRect(50 + i * 50, 315, 5, 40);
+            
+        }
     }
-    	
-     
+
     
     public void registroDeUsuarios() {
     	JPanel panelCentral = new JPanel(); 
