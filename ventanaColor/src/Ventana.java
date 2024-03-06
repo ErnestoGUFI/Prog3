@@ -150,19 +150,6 @@ public class Ventana extends JFrame {
         g2d.fillRoundRect(594, 577, 85, 25,10,10);
         
         
-        // Agregar bordes a los obstáculos
-        g2d.setColor(Color.black);
-        g2d.drawRoundRect(345, 563, 125, 185, 10, 10);
-
-        
-
-        // Agregar ojos a los enemigos voladores
-        g2d.setColor(Color.white);
-        g2d.fillOval(250, 197, 20, 20); // ojo izquierdo
-        g2d.fillOval(315, 197, 20, 20); // ojo derecho
-        g2d.setColor(Color.black);
-        g2d.drawOval(250, 197, 20, 20); // contorno del ojo izquierdo
-        g2d.drawOval(315, 197, 20, 20); // contorno del ojo derecho
       
         
     
