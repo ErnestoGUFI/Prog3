@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
@@ -103,7 +104,7 @@ public class Ventana extends JFrame {
  
         g2d.setColor(Color.black);
         g2d.fillRoundRect(232, 603, 125, 125,10,10);
-        g2d.setColor(Color.decode("#fa8072"));
+        g2d.setColor(Color.decode("#FFC0B5"));
         g2d.fillRoundRect(235, 606, 120, 120,10,10);
         
         g2d.setColor(Color.black);
@@ -115,26 +116,53 @@ public class Ventana extends JFrame {
         g2d.fillRoundRect(800, 606, 120, 120,10,10);
         
         
+        
+        
         //obstaculos voladores
         g2d.setColor(Color.black);
         g2d.fillRoundRect(232, 197, 65, 65,10,10);
-        g2d.setColor(Color.decode("#fa8072"));
+        g2d.setColor(Color.decode("#FF8752"));
         g2d.fillRoundRect(235, 200, 60, 60,10,10);
         g2d.setColor(Color.black);
         g2d.fillRoundRect(294, 197, 65, 65,10,10);
-        g2d.setColor(Color.decode("#fa8072"));
+        g2d.setColor(Color.decode("#FF8752"));
         g2d.fillRoundRect(297, 200, 60, 60,10,10);
         
         g2d.setColor(Color.black);
         g2d.fillRoundRect(52, 400, 65, 65,10,10);
-        g2d.setColor(Color.decode("#fa8072"));
+        g2d.setColor(Color.decode("#FF8752"));
         g2d.fillRoundRect(55, 403, 60, 60,10,10);
         
         g2d.setColor(Color.black);
         g2d.fillRoundRect(847, 400, 65, 65,10,10);
-        g2d.setColor(Color.decode("#fa8072"));
+        g2d.setColor(Color.decode("#FF8752"));
         g2d.fillRoundRect(850, 403, 60, 60,10,10);
-     
+        
+        //tuberia
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(597, 603, 80, 145,10,10);
+        g2d.setPaint(new GradientPaint(600, 545, Color.decode("#006400"), 680, 545, Color.decode("#90EE90")));
+        g2d.fillRoundRect(600, 605, 75, 140,10,10);
+        
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(592, 575, 90, 30,10,10);
+        g2d.setPaint(new GradientPaint(600, 545, Color.decode("#006400"), 680, 545, Color.decode("#90EE90")));
+        g2d.fillRoundRect(594, 577, 85, 25,10,10);
+        
+        
+        // Agregar bordes a los obstáculos
+        g2d.setColor(Color.black);
+        g2d.drawRoundRect(345, 563, 125, 185, 10, 10);
+
+        
+
+        // Agregar ojos a los enemigos voladores
+        g2d.setColor(Color.white);
+        g2d.fillOval(250, 197, 20, 20); // ojo izquierdo
+        g2d.fillOval(315, 197, 20, 20); // ojo derecho
+        g2d.setColor(Color.black);
+        g2d.drawOval(250, 197, 20, 20); // contorno del ojo izquierdo
+        g2d.drawOval(315, 197, 20, 20); // contorno del ojo derecho
       
         
     
