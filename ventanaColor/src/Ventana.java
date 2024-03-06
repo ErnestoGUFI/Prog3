@@ -78,64 +78,86 @@ public class Ventana extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
+        
+        //fondo
+        g2d.setColor(Color.decode("#a2f0ff"));
+        g2d.fillRect(0, 10, 1280, 720);
 
-        //casa
-        g2d.setColor(Color.decode("#FFD562"));
-        g2d.fillRect(75, 190, 250, 150);
         
-        g2d.setColor(Color.decode("#724F00"));
-        for (int i = 0; i < 10; i++) {
-            g2d.fillRect(75, 190 + i * 20, 250, 3);
-        }
         
-        g2d.setColor(Color.gray);
-        g2d.fillRect(230, 120, 50, 50);
+    
+        //obstaculos
         
-        //techo
-        int[] xPoints = {50, 150, 350};
-        int[] yPoints = {200, 100, 200};
-        g2d.setColor(Color.decode("#B10B1C"));
-        g2d.fillPolygon(xPoints, yPoints, 3);
+        //sombra
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(345, 563, 125, 185,10,10);
         
-        //puerta
-        g2d.setColor(Color.decode("#674A00"));
-        g2d.fillRect(115, 230, 65, 100);
-        g2d.setColor(Color.decode("#9F6E00"));
-        g2d.fillRect(120, 235, 55, 90);
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(327, 543, 125, 185,10,10);
+        g2d.setColor(Color.decode("#71c2ff"));
+        g2d.fillRoundRect(330, 545, 120, 180,10,10);
+       
+        //sombra
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(250, 625, 125, 125,10,10);
+ 
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(232, 603, 125, 125,10,10);
+        g2d.setColor(Color.decode("#fa8072"));
+        g2d.fillRoundRect(235, 606, 120, 120,10,10);
         
-        g2d.setColor(Color.decode("#DAA520"));
-        g2d.fillOval(160, 280, 10, 10);
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(815, 625, 125, 125,10,10);
         
-        //ventana
-        g2d.setColor(Color.decode("#B10B1C"));
-        g2d.fillRect(235, 235, 60, 60);
-        g2d.setColor(Color.white);
-        g2d.fillRect(240, 240, 50, 50);
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(797, 603, 125, 125,10,10);
+        g2d.setColor(Color.decode("#00dd5b"));
+        g2d.fillRoundRect(800, 606, 120, 120,10,10);
         
-        // Detalles de la ventana
-        g2d.setColor(Color.decode("#B10B1C"));
-        g2d.drawLine(265, 240, 265, 290);
-        g2d.drawLine(240, 265, 290, 265);
         
-        g2d.setColor(Color.DARK_GRAY);
-        g2d.fillRect(233, 295, 65, 10);
+        //obstaculos voladores
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(232, 197, 65, 65,10,10);
+        g2d.setColor(Color.decode("#fa8072"));
+        g2d.fillRoundRect(235, 200, 60, 60,10,10);
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(294, 197, 65, 65,10,10);
+        g2d.setColor(Color.decode("#fa8072"));
+        g2d.fillRoundRect(297, 200, 60, 60,10,10);
         
-        //base de la casa
-        g2d.setColor(Color.gray);
-        g2d.fillRect(70, 330, 260, 50);
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(52, 400, 65, 65,10,10);
+        g2d.setColor(Color.decode("#fa8072"));
+        g2d.fillRoundRect(55, 403, 60, 60,10,10);
+        
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(847, 400, 65, 65,10,10);
+        g2d.setColor(Color.decode("#fa8072"));
+        g2d.fillRoundRect(850, 403, 60, 60,10,10);
+     
+      
+        
+    
+        
+      
 
         //suelo
-        g2d.setColor(Color.decode("#354D00"));
-        g2d.fillRect(0, 350, 520, 50);
+        g2d.setColor(Color.black);
+        g2d.fillRect(0, 727, 1000, 3);
         
-        //valla
-        g2d.setColor(Color.decode("#964B00"));
-        g2d.fillRect(0, 320, 500, 5);
-        for (int i = 0; i < 10; i++) {
-            g2d.fillRect(50 + i * 50, 315, 5, 40);
+        g2d.setColor(Color.decode("#fdbca1"));
+        g2d.fillRect(0, 730, 1000, 50);
+
+        g2d.setColor(Color.decode("#cd724c"));
+        g2d.fillRect(0, 750, 1000, 50);
+        
+        g2d.setColor(Color.black);
+        g2d.fillRect(0, 750, 1000, 3);
+        
+       
             
         }
-    }
+    
 
     
     public void registroDeUsuarios() {
