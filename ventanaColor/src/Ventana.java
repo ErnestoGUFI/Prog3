@@ -81,73 +81,71 @@ public class Ventana extends JFrame {
         Graphics2D g2d = (Graphics2D) g;
         
         //fondo
-        g2d.setColor(Color.decode("#a2f0ff"));
+        g2d.setColor(Color.decode("#0665C0"));
         g2d.fillRect(0, 10, 1280, 720);
-
         
         
-    
-        //obstaculos
+        g2d.setColor(Color.decode("#95C1C7"));
+        g2d.fillRoundRect(400, 300, 175, 1000,200,200);
+        g2d.setColor(Color.decode("#C6E3E7"));
+        g2d.fillRoundRect(380, 300, 175, 1000,200,200);
         
-        //sombra
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(345, 563, 125, 185,10,10);
         
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(327, 543, 125, 185,10,10);
-        g2d.setColor(Color.decode("#71c2ff"));
-        g2d.fillRoundRect(330, 545, 120, 180,10,10);
+        g2d.setColor(Color.decode("#95C1C7"));
+        g2d.fillRoundRect(40, 300, 175, 1000,200,200);
+        g2d.setColor(Color.decode("#C6E3E7"));
+        g2d.fillRoundRect(20, 300, 175, 1000,200,200);
+        
+        
+        g2d.setColor(Color.decode("#95C1C7"));
+        g2d.fillRoundRect(596, 150, 175, 1000,200,200);
+        g2d.setColor(Color.decode("#C6E3E7"));
+        g2d.fillRoundRect(576, 150, 175, 1000,200,200);
+        
        
-        //sombra
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(250, 625, 125, 125,10,10);
- 
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(232, 603, 125, 125,10,10);
+        g2d.setColor(Color.decode("#125175"));
+        g2d.fillRoundRect(650, 425, 200, 700,200,200);
+        g2d.setColor(Color.decode("#71c2ff"));
+        g2d.fillRoundRect(630, 425, 200, 700,200,200);
+       
+        g2d.setColor(Color.decode("#125175"));
+        g2d.fillRoundRect(430, 550, 200, 700,200,200);
+        g2d.setColor(Color.decode("#71c2ff"));
+        g2d.fillRoundRect(410, 550, 200, 700,200,200);
+        
         g2d.setColor(Color.decode("#FFC0B5"));
-        g2d.fillRoundRect(235, 606, 120, 120,10,10);
-        
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(815, 625, 125, 125,10,10);
-        
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(797, 603, 125, 125,10,10);
-        g2d.setColor(Color.decode("#00dd5b"));
-        g2d.fillRoundRect(800, 606, 120, 120,10,10);
+        g2d.fillRoundRect(-50, 550, 200, 700,250,200);
         
         
-        
-        
-        //obstaculos voladores
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(232, 197, 65, 65,10,10);
-        g2d.setColor(Color.decode("#FF8752"));
-        g2d.fillRoundRect(235, 200, 60, 60,10,10);
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(294, 197, 65, 65,10,10);
-        g2d.setColor(Color.decode("#FF8752"));
-        g2d.fillRoundRect(297, 200, 60, 60,10,10);
-        
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(52, 400, 65, 65,10,10);
-        g2d.setColor(Color.decode("#FF8752"));
-        g2d.fillRoundRect(55, 403, 60, 60,10,10);
-        
-        g2d.setColor(Color.black);
-        g2d.fillRoundRect(847, 400, 65, 65,10,10);
-        g2d.setColor(Color.decode("#FF8752"));
-        g2d.fillRoundRect(850, 403, 60, 60,10,10);
+     	// Nubes
+        g2d.setColor(Color.white);
+        g2d.fillRoundRect(50, 200, 140, 60, 80, 80);   // Ajustado para no pasar la coordenada x máxima de la tubería morada
+        g2d.fillRoundRect(250, 300, 180, 80, 100, 100);
+        g2d.fillRoundRect(350, 230, 220, 90, 120, 120);  // Ajustado para no sobrepasar la tubería morada
+        g2d.fillRoundRect(550, 350, 200, 70, 100, 100);  // Ajustado para no sobrepasar la tubería morada
+        g2d.fillRoundRect(750, 290, 240, 80, 120, 120);  // Ajustado para no sobrepasar la tubería morada
+        g2d.fillRoundRect(950, 220, 180, 60, 80, 80);
         
         //tuberia
         g2d.setColor(Color.black);
-        g2d.fillRoundRect(597, 603, 80, 145,10,10);
-        g2d.setPaint(new GradientPaint(600, 545, Color.decode("#006400"), 680, 545, Color.decode("#90EE90")));
-        g2d.fillRoundRect(600, 605, 75, 140,10,10);
+        g2d.fillRoundRect(497, 603, 80, 145,10,10);
+        g2d.setPaint(new GradientPaint(500, 445, Color.decode("#E4E9FE"), 680, 545, Color.decode("#4C4993")));
+        g2d.fillRoundRect(500, 605, 75, 140,10,10);
         
         g2d.setColor(Color.black);
-        g2d.fillRoundRect(592, 575, 90, 30,10,10);
-        g2d.setPaint(new GradientPaint(600, 545, Color.decode("#006400"), 680, 545, Color.decode("#90EE90")));
-        g2d.fillRoundRect(594, 577, 85, 25,10,10);
+        g2d.fillRoundRect(492, 575, 90, 30,10,10);
+        g2d.setPaint(new GradientPaint(500, 445, Color.decode("#E4E9FE"), 680, 545, Color.decode("#4C4993")));
+        g2d.fillRoundRect(494, 577, 85, 25,10,10);
+        
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(897, 693, 80, 145,10,10);
+        g2d.setPaint(new GradientPaint(500, 445, Color.decode("#E4E9FE"), 680, 545, Color.decode("#4C4993")));
+        g2d.fillRoundRect(900, 695, 75, 140,10,10);
+        
+        g2d.setColor(Color.black);
+        g2d.fillRoundRect(892, 665, 90, 30,10,10);
+        g2d.setPaint(new GradientPaint(500, 445, Color.decode("#E4E9FE"), 680, 545, Color.decode("#4C4993")));
+        g2d.fillRoundRect(894, 667, 85, 25,10,10);
         
         
       
@@ -160,10 +158,10 @@ public class Ventana extends JFrame {
         g2d.setColor(Color.black);
         g2d.fillRect(0, 727, 1000, 3);
         
-        g2d.setColor(Color.decode("#fdbca1"));
+        g2d.setColor(Color.decode("#0A7811"));
         g2d.fillRect(0, 730, 1000, 50);
 
-        g2d.setColor(Color.decode("#cd724c"));
+        g2d.setColor(Color.decode("#D29B67"));
         g2d.fillRect(0, 750, 1000, 50);
         
         g2d.setColor(Color.black);
