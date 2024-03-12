@@ -30,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 public class Ventana extends JFrame {
    
@@ -68,14 +69,14 @@ public class Ventana extends JFrame {
    
    
     public void iniciarComponentes() {
-    //login();
-    //registro();
-    //admin();
-    //calculadora();
-    	//interes();
+    //this.login();
+    this.registro();
+    //this.admin();
+    //this.calculadora();
+    //this.interes();
     	
     }
-    
+    /*
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -89,7 +90,6 @@ public class Ventana extends JFrame {
         g2d.fillRoundRect(400, 300, 175, 1000,200,200);
         g2d.setColor(Color.decode("#C6E3E7"));
         g2d.fillRoundRect(380, 300, 175, 1000,200,200);
-        
         
         g2d.setColor(Color.decode("#95C1C7"));
         g2d.fillRoundRect(40, 300, 175, 1000,200,200);
@@ -146,14 +146,7 @@ public class Ventana extends JFrame {
         g2d.fillRoundRect(892, 665, 90, 30,10,10);
         g2d.setPaint(new GradientPaint(500, 445, Color.decode("#E4E9FE"), 680, 545, Color.decode("#4C4993")));
         g2d.fillRoundRect(894, 667, 85, 25,10,10);
-        
-        
-      
-        
-    
-        
-      
-
+  
         //suelo
         g2d.setColor(Color.black);
         g2d.fillRect(0, 727, 1000, 3);
@@ -166,11 +159,9 @@ public class Ventana extends JFrame {
         
         g2d.setColor(Color.black);
         g2d.fillRect(0, 750, 1000, 3);
-        
-       
-            
+   
         }
-    
+        */    
 
     
     public void registroDeUsuarios() {
@@ -610,6 +601,7 @@ public class Ventana extends JFrame {
     JTextField usuarioTexto = new JTextField();
     usuarioTexto.setSize(400, 50);
     usuarioTexto.setLocation(150, 180);
+    usuarioTexto.setBorder(new LineBorder(Color.black,2,true));
     loginDentro.add(usuarioTexto);
 
     //texto de contraseña
@@ -642,6 +634,32 @@ public class Ventana extends JFrame {
     botonAcceder.setLocation(270, 400);
     botonAcceder.setBackground(Color.decode("#FFCC00"));
     botonAcceder.setFont(new Font("Arial Black", Font.ITALIC, 24));
+    botonAcceder.addActionListener(new ActionListener(){
+    	
+    	
+    	public void actionPerformed(ActionEvent e) {
+    		String usr = usuarioTexto.getText();
+    		String pwd = new String(contrasenaTexto.getPassword());
+    		
+    		if (usr.length()<=0) {
+        		usuarioTexto.setBorder(new LineBorder(Color.red,2,true));
+        		System.out.println("no jala");
+        	
+    		}else {
+    			usuarioTexto.setBorder(new LineBorder(Color.green,2,true));
+    		}
+    			if(pwd.length()<=0) {
+    				contrasenaTexto.setBorder(new LineBorder(Color.red,2,true));
+    				System.out.println("Bienvenido");
+    			}else {
+    				contrasenaTexto.setBorder(new LineBorder(Color.green,2,true));
+    			}
+    	}
+    });
+ 
+    		
+  
+    
     loginDentro.add(botonAcceder);
     
     //boton de creacion de cuenta
@@ -666,6 +684,8 @@ public class Ventana extends JFrame {
     label2.setLocation(110, 290);
     label2.setOpaque(false);
     loginDentro.add(label2);
+    
+    
     
    
    
@@ -776,8 +796,8 @@ public class Ventana extends JFrame {
 
         JPanel registro = new JPanel();
         registro.setLayout(null);
-        registro.setSize(getWidth() / 2, getHeight());
-        registro.setLocation(500, 0);
+        registro.setSize(getWidth(), getHeight());
+        registro.setLocation(0, 0);
         registro.setBackground(Color.pink);
        
         JLabel registerTag = new JLabel("Registro",0);
@@ -863,14 +883,14 @@ public class Ventana extends JFrame {
        
         //boton aceptar terminos
         JRadioButton botonAceptar = new JRadioButton("Acepto");
-        botonAceptar.setBounds(550,600, 150, 20);
+        botonAceptar.setBounds(550,550, 150, 20);
         botonAceptar.setFont(new Font("Arial", Font.BOLD, 24));
         botonAceptar.setOpaque(false);
         registro.add(botonAceptar);
        
         //boton denegar terminos
         JRadioButton botonDenegar = new JRadioButton("Deniego");
-        botonDenegar.setBounds(800,600, 150, 20);
+        botonDenegar.setBounds(800,550, 150, 20);
         botonDenegar.setFont(new Font("Arial", Font.BOLD, 24));
         botonDenegar.setOpaque(false);
         registro.add(botonDenegar);
@@ -883,10 +903,64 @@ public class Ventana extends JFrame {
         //arreglo de locaciones y combobox
         String locacionesArreglo[]={"Centro","Camino Real","Pedregal"};
         JComboBox locaciones = new JComboBox(locacionesArreglo);
-        locaciones.setBounds(650,650,150,20);
+        locaciones.setBounds(650,600,150,20);
         registro.add(locaciones);
-       
+        
+        JButton acceder = new JButton("ACCEDER");
+        acceder.setBounds(630,650,200,20);
+        registro.add(acceder);
+        
 
+        
+        
+        
+        acceder.addActionListener(new ActionListener(){
+        	
+        	
+        	public void actionPerformed(ActionEvent e) {
+        		String usr = ingresarUsuario.getText();
+        		String bio = new String(textoBio.getText());
+        		
+        		if (usr.length()<=0) {
+        			
+        			ingresarUsuario.setBorder(new LineBorder(Color.red,2,true));
+        			
+            		System.out.println("no jala");
+            	
+        		}else {
+        			ingresarUsuario.setBorder(new LineBorder(Color.green,2,true));
+        			
+        			}
+        		if(bio.length()<=0) {
+        			
+        			textoBio.setBorder(new LineBorder(Color.red,2,true));
+        			
+        			System.out.println("no jala");
+
+        		}else {
+        			textoBio.setBorder(new LineBorder(Color.green,2,true));
+        			}
+        		
+        			
+        	}
+        });
+        
+        JButton probar = new JButton("Probar Inicio de sesion");
+        probar.setBounds(630,700,200,20);
+        registro.add(probar);
+        
+        probar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	
+				login();
+    			registro.setVisible(false);
+			
+        
+        }
+        });
+    		
+    			
+   
        
         this.add(registro);
 
