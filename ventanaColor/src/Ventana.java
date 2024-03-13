@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -69,11 +70,12 @@ public class Ventana extends JFrame {
    
    
     public void iniciarComponentes() {
-    //this.login();
-    this.registro();
-    //this.admin();
-    //this.calculadora();
-    //this.interes();
+	    //this.login();
+	    //this.registro();
+	    //this.admin();
+	    //this.calculadora();
+	    //this.interes();
+	    this.botones();
     	
     }
     /*
@@ -346,9 +348,6 @@ public class Ventana extends JFrame {
         this.add(panelCentral);
     }
 
-
-    
-    
     public void interes()
     {
     JPanel panel = new JPanel();
@@ -472,7 +471,6 @@ public class Ventana extends JFrame {
 		this.add(panel);
     }
 
-    
     public void calculadora() {
        
         JPanel panelPrincipal = new JPanel();
@@ -536,17 +534,7 @@ public class Ventana extends JFrame {
         panelPrincipal.add(panelVerticalDerecha, BorderLayout.EAST);
         this.add(panelPrincipal);
     }
-
-    
-    
-   
-   
-   
-   
-   
-    
-    
-   
+ 
     public void login() {
     JPanel login = new JPanel();
     login.setLayout(null);
@@ -789,10 +777,7 @@ public class Ventana extends JFrame {
     this.add(admin_panel);
     }
     
-   
-    
     public void registro() {
-        
 
         JPanel registro = new JPanel();
         registro.setLayout(null);
@@ -910,9 +895,7 @@ public class Ventana extends JFrame {
         acceder.setBounds(630,650,200,20);
         registro.add(acceder);
         
-
-        
-        
+     
         
         acceder.addActionListener(new ActionListener(){
         	
@@ -958,6 +941,7 @@ public class Ventana extends JFrame {
         
         }
         });
+    
     		
     			
    
@@ -968,4 +952,54 @@ public class Ventana extends JFrame {
        
        
     }
-}
+
+	public void botones() {
+		
+		this.setSize(500,750);
+		
+		JPanel botonesPanel = new JPanel();
+		botonesPanel.setLayout(null);
+		botonesPanel.setSize(getWidth(), getHeight());
+		botonesPanel.setLocation(100, 100);
+		botonesPanel.setBackground(Color.pink);
+		
+		
+		
+		JButton superBoton = new JButton("Probar Inicio de sesion");
+		superBoton.setBounds(630,700,200,20);
+		botonesPanel.add(superBoton);
+	        
+	    superBoton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	    	
+	    	int x = (int)Math.floor(Math.random()*450+1);
+	    	int y = (int)Math.floor(Math.random()*650+1);
+	    	
+	    	int w = (int)Math.floor(Math.random()*120+1);
+	    	int h = (int)Math.floor(Math.random()*120+1);
+	    	
+	    	Random rand = new Random();
+	    	
+	    	float r = rand.nextFloat();
+	    	float g = rand.nextFloat();
+	    	float b = rand.nextFloat();
+	    	
+	    	
+	    	
+	    	JButton otroBoton = new JButton(r+""+g+""+b);
+	    	otroBoton.setBounds(x,y,w,h);
+	    	otroBoton.setBackground(new Color(r,g,b));
+	    	botonesPanel.add(otroBoton);
+	    	
+	    	getContentPane().repaint();
+	    	
+	    	
+	     
+	        }
+	        });
+		this.add(botonesPanel);
+	}
+	
+
+	}
+
