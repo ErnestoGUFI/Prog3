@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -966,7 +967,7 @@ public class Ventana extends JFrame {
 		
 		
 		JButton superBoton = new JButton("Probar Inicio de sesion");
-		superBoton.setBounds(630,700,200,20);
+		superBoton.setBounds(500,600,200,20);
 		botonesPanel.add(superBoton);
 	        
 	    superBoton.addActionListener(new ActionListener() {
@@ -989,7 +990,20 @@ public class Ventana extends JFrame {
 	    	JButton otroBoton = new JButton(r+""+g+""+b);
 	    	otroBoton.setBounds(x,y,w,h);
 	    	otroBoton.setBackground(new Color(r,g,b));
+	    	otroBoton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(
+							   botonesPanel,
+							   r+""+g+""+b);
+					
+				}
+	    		
+	    	});
+	    	
 	    	botonesPanel.add(otroBoton);
+	    	
 	    	
 	    	getContentPane().repaint();
 	    	
