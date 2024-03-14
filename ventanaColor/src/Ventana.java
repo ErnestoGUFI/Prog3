@@ -964,7 +964,6 @@ public class Ventana extends JFrame {
         botonesPanel.setSize(getWidth(), getHeight());
         botonesPanel.setLocation(100, 100);
         botonesPanel.setBackground(Color.pink);
-        
 
         botonesPanel.addMouseListener(new MouseAdapter() {
             @Override
@@ -989,26 +988,15 @@ public class Ventana extends JFrame {
                 otroBoton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(botonesPanel, r+""+g+""+b);
-                        otroBoton.setVisible(false);
+                        JButton botono = ((JButton) e.getSource());
+                        botonesPanel.remove(botono);
+                        getContentPane().repaint();
                         
                     }
                 });
 
                 botonesPanel.add(otroBoton);
                 getContentPane().repaint();
-                
-            }
-            
-            public void mouseEntered(MouseEvent e) {
-
-            	Random rand = new Random();
-                float r = rand.nextFloat();
-                float g = rand.nextFloat();
-                float b = rand.nextFloat();
-                
-            	botonesPanel.setBackground(new Color(r,g,b));
-            	
             }
         });
 
