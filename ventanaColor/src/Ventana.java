@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -954,65 +956,53 @@ public class Ventana extends JFrame {
        
     }
 
-	public void botones() {
-		
-		this.setSize(500,750);
-		
-		JPanel botonesPanel = new JPanel();
-		botonesPanel.setLayout(null);
-		botonesPanel.setSize(getWidth(), getHeight());
-		botonesPanel.setLocation(100, 100);
-		botonesPanel.setBackground(Color.pink);
-		
-		
-		
-		JButton superBoton = new JButton("Probar Inicio de sesion");
-		superBoton.setBounds(500,600,200,20);
-		botonesPanel.add(superBoton);
-	        
-	    superBoton.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	
-	    	int x = (int)Math.floor(Math.random()*450+1);
-	    	int y = (int)Math.floor(Math.random()*650+1);
-	    	
-	    	int w = (int)Math.floor(Math.random()*120+1);
-	    	int h = (int)Math.floor(Math.random()*120+1);
-	    	
-	    	Random rand = new Random();
-	    	
-	    	float r = rand.nextFloat();
-	    	float g = rand.nextFloat();
-	    	float b = rand.nextFloat();
-	    	
-	    	
-	    	
-	    	JButton otroBoton = new JButton(r+""+g+""+b);
-	    	otroBoton.setBounds(x,y,w,h);
-	    	otroBoton.setBackground(new Color(r,g,b));
-	    	otroBoton.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(
-							   botonesPanel,
-							   r+""+g+""+b);
-					
-				}
-	    		
-	    	});
-	    	
-	    	botonesPanel.add(otroBoton);
-	    	
-	    	
-	    	getContentPane().repaint();
-	    	
-	    	
-	     
-	        }
-	        });
-		this.add(botonesPanel);
-	}
+    public void botones() {
+        this.setSize(500,750);
+        
+        JPanel botonesPanel = new JPanel();
+        botonesPanel.setLayout(null);
+        botonesPanel.setSize(getWidth(), getHeight());
+        botonesPanel.setLocation(100, 100);
+        botonesPanel.setBackground(Color.pink);
+        
+        botonesPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e);
+                
+                int x = e.getX();
+                int y = e.getY();
+                
+                int w = (int)Math.floor(Math.random()*120+1);
+                int h = (int)Math.floor(Math.random()*120+1);
+                
+                Random rand = new Random();
+                
+                float r = rand.nextFloat();
+                float g = rand.nextFloat();
+                float b = rand.nextFloat();
+                
+                JButton otroBoton = new JButton(r+""+g+""+b);
+                otroBoton.setBounds(x,y,w,h);
+                otroBoton.setBackground(new Color(r,g,b));
+                otroBoton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(botonesPanel, r+""+g+""+b);
+                    }
+                });
+                
+                botonesPanel.add(otroBoton);
+                getContentPane().repaint();
+            }
+        });
+        
+        JButton superBoton = new JButton("Probar Inicio de sesion");
+        superBoton.setBounds(500,600,200,20);
+        botonesPanel.add(superBoton);
+        
+        this.add(botonesPanel);
+    }
 	
 
 	}
