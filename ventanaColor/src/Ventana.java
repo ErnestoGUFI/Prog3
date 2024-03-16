@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -963,6 +965,8 @@ public class Ventana extends JFrame {
         botonesPanel.setLayout(null);
         botonesPanel.setSize(getWidth(), getHeight());
         botonesPanel.setLocation(100, 100);
+        botonesPanel.setFocusable(true); 
+        botonesPanel.requestFocusInWindow();
         botonesPanel.setBackground(Color.pink);
 
         botonesPanel.addMouseListener(new MouseAdapter() {
@@ -988,17 +992,39 @@ public class Ventana extends JFrame {
                 otroBoton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JButton botono = ((JButton) e.getSource());
-                        botonesPanel.remove(botono);
-                        getContentPane().repaint();
-                        
+                        JOptionPane.showMessageDialog(botonesPanel, r+""+g+""+b);
+                        otroBoton.setVisible(false);
                     }
                 });
 
                 botonesPanel.add(otroBoton);
                 getContentPane().repaint();
             }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Random rand = new Random();
+                float r = rand.nextFloat();
+                float g = rand.nextFloat();
+                float b = rand.nextFloat();
+
+                botonesPanel.setBackground(new Color(r,g,b));
+            }
         });
+
+       
+
+        botonesPanel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                	botonesPanel.removeAll(); 
+                    botonesPanel.repaint();
+                }
+            }
+        });
+        
+
 
         JButton superBoton = new JButton("Probar Inicio de sesion");
         superBoton.setBounds(500,600,200,20);
@@ -1006,6 +1032,7 @@ public class Ventana extends JFrame {
 
         this.add(botonesPanel);
     }
+
 
 	}
 
