@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -1012,19 +1013,23 @@ public class Ventana extends JFrame {
             }
         });
 
-       
-
         botonesPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                	botonesPanel.removeAll(); 
+                    botonesPanel.removeAll(); 
                     botonesPanel.repaint();
+                } else if (e.getKeyCode() == KeyEvent.VK_W) {
+                    Component[] components = botonesPanel.getComponents();
+                    for (Component component : components) {
+                        if (component instanceof JButton) {
+                            JButton button = (JButton) component;
+                            button.setSize(button.getWidth() + 10, button.getHeight() + 10);
+                        }
+                    }
                 }
             }
         });
-        
-
 
         JButton superBoton = new JButton("Probar Inicio de sesion");
         superBoton.setBounds(500,600,200,20);
