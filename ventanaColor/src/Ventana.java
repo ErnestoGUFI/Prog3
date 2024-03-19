@@ -960,13 +960,13 @@ public class Ventana extends JFrame {
     }
 
     public void botones() {
-        this.setSize(500,750);
+        this.setSize(500, 750);
 
         JPanel botonesPanel = new JPanel();
         botonesPanel.setLayout(null);
         botonesPanel.setSize(getWidth(), getHeight());
         botonesPanel.setLocation(100, 100);
-        botonesPanel.setFocusable(true); 
+        botonesPanel.setFocusable(true);
         botonesPanel.requestFocusInWindow();
         botonesPanel.setBackground(Color.pink);
 
@@ -978,8 +978,8 @@ public class Ventana extends JFrame {
                 int x = e.getX();
                 int y = e.getY();
 
-                int w = (int)Math.floor(Math.random()*120+1);
-                int h = (int)Math.floor(Math.random()*120+1);
+                int w = (int) Math.floor(Math.random() * 120 + 1);
+                int h = (int) Math.floor(Math.random() * 120 + 1);
 
                 Random rand = new Random();
 
@@ -987,13 +987,13 @@ public class Ventana extends JFrame {
                 float g = rand.nextFloat();
                 float b = rand.nextFloat();
 
-                JButton otroBoton = new JButton(r+""+g+""+b);
-                otroBoton.setBounds(x,y,w,h);
-                otroBoton.setBackground(new Color(r,g,b));
+                JButton otroBoton = new JButton(r + "" + g + "" + b);
+                otroBoton.setBounds(x, y, w, h);
+                otroBoton.setBackground(new Color(r, g, b));
                 otroBoton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JOptionPane.showMessageDialog(botonesPanel, r+""+g+""+b);
+                        JOptionPane.showMessageDialog(botonesPanel, r + "" + g + "" + b);
                         otroBoton.setVisible(false);
                     }
                 });
@@ -1009,33 +1009,66 @@ public class Ventana extends JFrame {
                 float g = rand.nextFloat();
                 float b = rand.nextFloat();
 
-                botonesPanel.setBackground(new Color(r,g,b));
+                botonesPanel.setBackground(new Color(r, g, b));
             }
         });
 
         botonesPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                    botonesPanel.removeAll(); 
-                    botonesPanel.repaint();
-                } else if (e.getKeyCode() == KeyEvent.VK_W) {
-                    Component[] components = botonesPanel.getComponents();
-                    for (Component component : components) {
-                        if (component instanceof JButton) {
-                            JButton button = (JButton) component;
-                            button.setSize(button.getWidth() + 10, button.getHeight() + 10);
-                        }
+                int aumento = 10;
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_DELETE:
+                    case KeyEvent.VK_BACK_SPACE:
+                        botonesPanel.removeAll();
+                        botonesPanel.repaint();
+                        break;
+                    case KeyEvent.VK_W:
+                        moverBotones(0, -aumento);
+                        break;
+                    case KeyEvent.VK_S:
+                        moverBotones(0, aumento);
+                        break;
+                    case KeyEvent.VK_A:
+                        moverBotones(-aumento, 0);
+                        break;
+                    case KeyEvent.VK_D:
+                        moverBotones(aumento, 0);
+                        break;
+                    case KeyEvent.VK_E:
+                        cambiarTamano(aumento);
+                        break;
+                }
+            }
+
+            private void moverBotones(int deltaX, int deltaY) {
+                Component[] components = botonesPanel.getComponents();
+                for (Component component : components) {
+                    if (component instanceof JButton) {
+                        JButton button = (JButton) component;
+                        button.setLocation(button.getX() + deltaX, button.getY() + deltaY);
+                    }
+                }
+            }
+
+            private void cambiarTamano(int deltaSize) {
+                Component[] components = botonesPanel.getComponents();
+                for (Component component : components) {
+                    if (component instanceof JButton) {
+                        JButton button = (JButton) component;
+                        button.setSize(button.getWidth() + deltaSize, button.getHeight() + deltaSize);
                     }
                 }
             }
         });
 
         JButton superBoton = new JButton("Probar Inicio de sesion");
-        superBoton.setBounds(500,600,200,20);
+        superBoton.setBounds(500, 600, 200, 20);
         botonesPanel.add(superBoton);
 
         this.add(botonesPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
 
