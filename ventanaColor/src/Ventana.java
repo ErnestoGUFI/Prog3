@@ -81,7 +81,8 @@ public class Ventana extends JFrame {
 	    //this.admin();
 	    //this.calculadora();
 	    //this.interes();
-	    this.botones();
+	    //this.botones();
+    	this.ticTacToe();
     	
     }
     /*
@@ -1070,7 +1071,44 @@ public class Ventana extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+    
+    public void ticTacToe() {
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
+        panelPrincipal.setSize(this.getWidth(), this.getHeight());
+        panelPrincipal.setBackground(Color.blue);
 
+        JPanel panelBotones = new JPanel();
+        panelBotones.setLayout(new GridLayout(3, 3, 0, 0));
 
-	}
+        String btns[] = {"", "", "", "", "", "", "", "", ""};
+        final int[] turno = {1}; //me da error si no lo pongo asi y quien sabe por que
+        for (int i = 0; i < 9; i++) {
+            JButton boton = new JButton(btns[i]);
+            boton.setBackground(Color.gray);
+            boton.setForeground(Color.WHITE);
+            panelBotones.add(boton);
+
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JButton btn = (JButton) e.getSource();
+
+                    if (btn.getText().isEmpty()) {
+                        if (turno[0] % 2 == 1) {
+                            btn.setText("X");
+                        } else {
+                            btn.setText("O");
+                        }
+                        turno[0]++; 
+                    }
+                }
+            });
+        }
+
+        panelPrincipal.add(panelBotones, BorderLayout.CENTER);
+        add(panelPrincipal);
+    }
+}
+
 
