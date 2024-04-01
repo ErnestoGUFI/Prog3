@@ -82,7 +82,8 @@ public class Ventana extends JFrame {
 	    //this.calculadora();
 	    //this.interes();
 	    //this.botones();
-    	this.ticTacToe();
+    	//this.ticTacToe();
+    	this.factura();
     	
     }
     /*
@@ -554,9 +555,7 @@ public class Ventana extends JFrame {
     loginDentro.setSize(700,500);
     loginDentro.setOpaque(rootPaneCheckingEnabled);
     login.add(loginDentro);
-    
-   
-    
+
     JLabel loginTag = new JLabel("Inicio De Sesion",0);
     loginTag.setSize(500, 80);
     loginTag.setLocation(240, 40);
@@ -577,12 +576,6 @@ public class Ventana extends JFrame {
     loginTag2.setFont(new Font("Arial Black", Font.ITALIC, 48));
     loginTag2.setForeground(Color.decode("#FFCC00"));
     loginDentro.add(loginTag2);
-    
-    
-
-
-   
-    
 
     //texto de usuario
     JLabel usuario = new JLabel("INGRESA TU USUARIO");
@@ -664,6 +657,16 @@ public class Ventana extends JFrame {
     botonCrear.setBackground(Color.decode("#FFCC00"));
     botonCrear.setFont(new Font("Arial Black", Font.ITALIC, 24));
     login.add(botonCrear);
+    
+    botonCrear.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	
+				registro();
+    			login.setVisible(false);
+			
+        
+        }
+        });
     
     //icono de perfil
     ImageIcon imagen = new ImageIcon (getClass().getResource("icon.png"));
@@ -1108,6 +1111,273 @@ public class Ventana extends JFrame {
 
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
         add(panelPrincipal);
+    }
+    
+    public void factura()
+    {
+    	JPanel facturaPanel = new JPanel();
+    	facturaPanel.setLayout(null);
+    	facturaPanel.setBackground(Color.decode("#3F66B0"));
+        
+        JLabel facturaLabel = new JLabel();
+        facturaLabel.setLocation(0, 100);
+        facturaLabel.setLayout(null);
+        facturaLabel.setBackground(Color.white);
+        facturaLabel.setSize(1000,650);
+        facturaLabel.setOpaque(rootPaneCheckingEnabled);
+        facturaPanel.add(facturaLabel);
+
+        JLabel fac = new JLabel("Factura en Java - Arraylist y POO",0);
+        fac.setSize(700, 80);
+        fac.setLocation(10,0);
+        fac.setFont(new Font("Arial Black", Font.ITALIC, 32));
+        fac.setForeground(Color.white);
+        facturaPanel.add(fac);
+        
+        
+        JLabel datosCliente = new JLabel("Datos del cliente",0);
+        datosCliente.setSize(200, 80);
+        datosCliente.setLocation(0, -20);
+        datosCliente.setFont(new Font("Arial Black", Font.ITALIC, 12));
+        datosCliente.setForeground(Color.black);
+        facturaLabel.add(datosCliente);
+        
+        JLabel documento = new JLabel("Documento",0);
+        documento.setSize(200, 20);
+        documento.setLocation(5, 35);
+        documento.setFont(new Font("Arial", Font.ITALIC, 12));
+        documento.setForeground(Color.black);
+        facturaLabel.add(documento);
+        
+        JTextField documentoText = new JTextField();
+        documentoText.setSize(300, 20);
+        documentoText.setLocation(160, 35);
+        documentoText.setBorder(new LineBorder(Color.gray,2,true));
+        facturaLabel.add(documentoText);
+        
+        JLabel direccion = new JLabel("Direccion",0);
+        direccion.setSize(200, 20);
+        direccion.setLocation(5, 65);
+        direccion.setFont(new Font("Arial", Font.ITALIC, 12));
+        direccion.setForeground(Color.black);
+        facturaLabel.add(direccion);
+        
+        JTextField direccionText = new JTextField();
+        direccionText.setSize(300, 20);
+        direccionText.setLocation(160, 65);
+        direccionText.setBorder(new LineBorder(Color.gray,2,true));
+        facturaLabel.add(direccionText);
+        
+        JLabel nombres = new JLabel("Nombres",0);
+        nombres.setSize(200, 20);
+        nombres.setLocation(450, 35);
+        nombres.setFont(new Font("Arial", Font.ITALIC, 12));
+        nombres.setForeground(Color.black);
+        facturaLabel.add(nombres);
+        
+        JTextField nombresText = new JTextField();
+        nombresText.setSize(300, 20);
+        nombresText.setLocation(605, 35);
+        nombresText.setBorder(new LineBorder(Color.gray,2,true));
+        facturaLabel.add(nombresText);
+        
+        JLabel telefono = new JLabel("Teléfono",0);
+        telefono.setSize(200, 20);
+        telefono.setLocation(450, 65);
+        telefono.setFont(new Font("Arial", Font.ITALIC, 12));
+        telefono.setForeground(Color.black);
+        facturaLabel.add(telefono);
+        
+        JTextField telefonoText = new JTextField();
+        telefonoText.setSize(300, 20);
+        telefonoText.setLocation(605, 65);
+        telefonoText.setBorder(new LineBorder(Color.gray,2,true));
+        facturaLabel.add(telefonoText);
+        
+        
+        JLabel datosFactura = new JLabel("Datos de la factura",0);
+        datosFactura.setSize(200, 80);
+        datosFactura.setLocation(0, 80);
+        datosFactura.setFont(new Font("Arial Black", Font.ITALIC, 12));
+        datosFactura.setForeground(Color.black);
+        facturaLabel.add(datosFactura);
+        
+        JLabel numFactura = new JLabel("N.Facura",0);
+        numFactura.setSize(200, 20);
+        numFactura.setLocation(5, 135);
+        numFactura.setFont(new Font("Arial", Font.ITALIC, 12));
+        numFactura.setForeground(Color.black);
+        facturaLabel.add(numFactura);
+        
+        JLabel numeroFactura = new JLabel("1"); 
+        numeroFactura.setSize(100, 20);
+        numeroFactura.setLocation(200, 135);
+        numeroFactura.setFont(new Font("Arial", Font.BOLD, 12));
+        numeroFactura.setForeground(Color.black);
+        facturaLabel.add(numeroFactura);
+        
+        JLabel fecha = new JLabel("Fecha",0);
+        fecha.setSize(200, 20);
+        fecha.setLocation(400, 135);
+        fecha.setFont(new Font("Arial", Font.ITALIC, 12));
+        fecha.setForeground(Color.black);
+        facturaLabel.add(fecha);
+        
+        JLabel fechaNum = new JLabel("31/03/2024"); 
+        fechaNum.setSize(100, 20);
+        fechaNum.setLocation(595, 135);
+        fechaNum.setFont(new Font("Arial", Font.BOLD, 12));
+        fechaNum.setForeground(Color.black);
+        facturaLabel.add(fechaNum);
+        
+        JLabel verListado = new JLabel("Ver listado de facturas",0);
+        verListado.setSize(200, 20);
+        verListado.setLocation(10, 180);
+        verListado.setFont(new Font("Arial Black", Font.ITALIC, 12));
+        verListado.setForeground(Color.black);
+        facturaLabel.add(verListado);
+        
+        JLabel añadirBoton = new JLabel("Añadir");
+        añadirBoton.setSize(100, 20);
+        añadirBoton.setLocation(702, 182);
+        añadirBoton.setFont(new Font("Arial", Font.BOLD, 12));
+        añadirBoton.setForeground(Color.black);
+        facturaLabel.add(añadirBoton);
+
+        JLabel eliminarBoton = new JLabel("Eliminar");
+        eliminarBoton.setSize(100, 20);
+        eliminarBoton.setLocation(832, 182);
+        eliminarBoton.setFont(new Font("Arial", Font.BOLD, 12));
+        eliminarBoton.setForeground(Color.black);
+        facturaLabel.add(eliminarBoton);
+        
+        ImageIcon imagen = new ImageIcon (getClass().getResource("x.png"));
+        JLabel label = new JLabel(imagen);
+        label.setSize(32, 32);
+        label.setLocation(805, 175);
+        label.setOpaque(false);
+        facturaLabel.add(label);
+       
+        ImageIcon imagen2 = new ImageIcon (getClass().getResource("cheque.png"));
+        JLabel label2 = new JLabel(imagen2);
+        label2.setSize(32, 32);
+        label2.setLocation(675, 175);
+        label2.setOpaque(false);
+        facturaLabel.add(label2);
+        
+        ImageIcon imagen3 = new ImageIcon (getClass().getResource("menu.png"));
+        JLabel label3 = new JLabel(imagen3);
+        label3.setSize(32, 32);
+        label3.setLocation(10, 175);
+        label3.setOpaque(false);
+        facturaLabel.add(label3);
+        
+        String titulos[]= {"Producto","Cantidad","Valor","Sub Total"};
+        String table_data[][]= {{"Agua","2","500","1000.0"},
+        		{"Cereal","5","1000","5000.0"},
+        		{"Leche","2","300","600,0"},
+       
+        };
+       
+
+        JTable listadoFacturas = new JTable(table_data,titulos);
+        JScrollPane table_scroll = new JScrollPane(listadoFacturas);
+        table_scroll.setBounds(30, 210, 920, 100);
+        table_scroll.setOpaque(true);
+        facturaLabel.add(table_scroll);
+        
+        
+        
+        JLabel subtotalLabel = new JLabel("Subtotal:");
+        subtotalLabel.setSize(100, 20);
+        subtotalLabel.setLocation(30, 330);
+        subtotalLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        subtotalLabel.setForeground(Color.black);
+        facturaLabel.add(subtotalLabel);
+
+        JLabel descuentoLabel = new JLabel("Descuento:");
+        descuentoLabel.setSize(100, 20);
+        descuentoLabel.setLocation(30, 360);
+        descuentoLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        descuentoLabel.setForeground(Color.black);
+        facturaLabel.add(descuentoLabel);
+
+        JLabel ivaLabel = new JLabel("IVA (19%):");
+        ivaLabel.setSize(100, 20);
+        ivaLabel.setLocation(30, 390);
+        ivaLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        ivaLabel.setForeground(Color.black);
+        facturaLabel.add(ivaLabel);
+
+        JLabel totalLabel = new JLabel("Total de Factura:");
+        totalLabel.setSize(120, 20);
+        totalLabel.setLocation(30, 420);
+        totalLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        totalLabel.setForeground(Color.black);
+        facturaLabel.add(totalLabel);
+
+        JLabel valorDescontadoLabel = new JLabel("Valor Descontado:");
+        valorDescontadoLabel.setSize(120, 20);
+        valorDescontadoLabel.setLocation(30, 450);
+        valorDescontadoLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+        valorDescontadoLabel.setForeground(Color.black);
+        facturaLabel.add(valorDescontadoLabel);
+
+        JLabel subtotalValue = new JLabel("$150.00");
+        subtotalValue.setSize(100, 20);
+        subtotalValue.setLocation(150, 330);
+        subtotalValue.setForeground(Color.black);
+        facturaLabel.add(subtotalValue);
+
+        JTextField descuentoText = new JTextField();
+        descuentoText.setSize(50, 20);
+        descuentoText.setLocation(150, 360);
+        descuentoText.setBorder(new LineBorder(Color.gray, 2, true));
+        facturaLabel.add(descuentoText);
+
+        JCheckBox activarDescuentoCheckbox = new JCheckBox();
+        activarDescuentoCheckbox.setSize(20, 20);
+        activarDescuentoCheckbox.setLocation(220, 360);
+        activarDescuentoCheckbox.setFont(new Font("Arial", Font.PLAIN, 12));
+        activarDescuentoCheckbox.setForeground(Color.black);
+        facturaLabel.add(activarDescuentoCheckbox);
+
+        JLabel ivaValue = new JLabel("$27.60");
+        ivaValue.setSize(100, 20);
+        ivaValue.setLocation(150, 390);
+        ivaValue.setForeground(Color.black);
+        facturaLabel.add(ivaValue);
+
+        JLabel totalValue = new JLabel("$162.60");
+        totalValue.setSize(100, 20);
+        totalValue.setLocation(150, 420);
+        totalValue.setForeground(Color.black);
+        facturaLabel.add(totalValue);
+
+        JLabel valorDescontadoValue = new JLabel("$15.00");
+        valorDescontadoValue.setSize(100, 20);
+        valorDescontadoValue.setLocation(150, 450);
+        valorDescontadoValue.setForeground(Color.black);
+        facturaLabel.add(valorDescontadoValue);
+        
+        JButton finalizarButton = new JButton("Finalizar Factura");
+        finalizarButton.setSize(150, 30);
+        finalizarButton.setLocation(600, 600);
+        finalizarButton.setFont(new Font("Arial", Font.PLAIN, 12));
+        facturaLabel.add(finalizarButton);
+
+        JButton limpiarButton = new JButton("Limpiar");
+        limpiarButton.setSize(100, 30);
+        limpiarButton.setLocation(800, 600);
+        limpiarButton.setFont(new Font("Arial", Font.PLAIN, 12));
+        facturaLabel.add(limpiarButton);
+        
+       
+        this.add(facturaPanel);
+       
+        
+
+    	
     }
 }
 
