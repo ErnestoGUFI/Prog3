@@ -14,6 +14,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -1073,7 +1076,6 @@ public class Ventana extends JFrame {
     }
     
     public void ticTacToe() {
-    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setSize(1080, 720);
     	setTitle("Tic Tac Toe");
     	setLocationRelativeTo(null);
@@ -1083,79 +1085,44 @@ public class Ventana extends JFrame {
     	panelPrincipal.setBackground(Color.blue);
 
     	JPanel panelBotones = new JPanel();
-    	panelBotones.setLayout(new GridLayout(3, 3, 0, 0));
+    	panelBotones.setBorder(new LineBorder(Color.green,60,false));
+    	panelBotones.setLayout(new GridLayout(4, 4, 10, 10));
+    	
 
-    	String btns[] = {"", "", "", "", "", "", "", "", ""};
-    	final int[] turno = {1};
-    	JLabel turnoLabel = new JLabel("Turno: X");
+    	String btns[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15"};
+    	
+    	List<String> listaNumeros= Arrays.asList(btns);
+    	Collections.shuffle(listaNumeros);
 
-    	for (int i = 0; i < 9; i++) {
+    	for (int i = 0; i < 15; i++) {
     	JButton boton = new JButton(btns[i]);
     	boton.setBackground(Color.gray);
     	boton.setForeground(Color.WHITE);
     	panelBotones.add(boton);
 
-    	boton.addActionListener(new ActionListener() {
-    	@Override
-    	public void actionPerformed(ActionEvent e) {
-    		JButton btn = (JButton) e.getSource();
-
-    		if (btn.getText().isEmpty()) {
-    		if (turno[0] % 2 == 1) {
-    		btn.setText("X");
-    		btns[panelBotones.getComponentZOrder(btn)] = "X";
-    		turnoLabel.setText("Turno: O");
-    		} else {
-    		btn.setText("O");
-    		
-    		btns[panelBotones.getComponentZOrder(btn)] = "O"; 
-
-    		}
-    		turno[0]++;
-
-    		if (verificarGanador(btns, btn.getText())) {
-    		JOptionPane.showMessageDialog(null, "¡" + btn.getText() + " ha ganado!");
-    		reiniciarJuego(btns, panelBotones);
-    		} else if (turno[0] == 10) {
-    		JOptionPane.showMessageDialog(null, "¡Empate!");
-    		reiniciarJuego(btns, panelBotones);
-    		}
-    		}
-    		}
-    	});
+    	
+    	if(i==14)
+    	{
+    		JButton botonVacio = new JButton("");
+    		botonVacio.setBackground(Color.BLUE);
+    		botonVacio.setForeground(Color.WHITE);
+        	panelBotones.add(botonVacio);
+        	
+        	
+        	
     	}
+    	
+      
+
+    	
 
     	panelPrincipal.add(panelBotones, BorderLayout.CENTER);
-    	panelPrincipal.add(turnoLabel, BorderLayout.NORTH);
     	add(panelPrincipal);
     	setVisible(true);
     	}
+    }
 
-    private boolean verificarGanador(String[] btns, String jugador) {
-    	
-    	for (int i = 0; i < 3; i++) {
-    	if ((btns[i*3].equals(jugador) && btns[i*3+1].equals(jugador) && btns[i*3+2].equals(jugador)) ||
-    	(btns[i].equals(jugador) && btns[i+3].equals(jugador) && btns[i+6].equals(jugador))) {
-    	return true;
-    	}
-    	}
-    	
-    	if ((btns[0].equals(jugador) && btns[4].equals(jugador) && btns[8].equals(jugador)) ||
-    	(btns[2].equals(jugador) && btns[4].equals(jugador) && btns[6].equals(jugador))) {
-    	return true;
-    	}
-    	return false;
-    	}
-    	
-    	
-
-    	private void reiniciarJuego(String[] btns, JPanel panelBotones) {
-    	for (int i = 0; i < btns.length; i++) {
-    	btns[i] = "";
-    	JButton boton = (JButton) panelBotones.getComponent(i);
-    	boton.setText("");
-    	}
-    	}
+    
 }
 
 
