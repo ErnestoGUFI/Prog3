@@ -8,6 +8,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -85,7 +86,7 @@ public class Ventana extends JFrame {
 	    //this.calculadora();
 	    //this.interes();
 	    //this.botones();
-    	this.ticTacToe();
+    	this.juegoNumbers();
     	
     }
     /*
@@ -1075,54 +1076,83 @@ public class Ventana extends JFrame {
         setVisible(true);
     }
     
-    public void ticTacToe() {
-    	setSize(1080, 720);
-    	setTitle("Tic Tac Toe");
-    	setLocationRelativeTo(null);
+    public void juegoNumbers() {
+        setSize(1080, 720);
+        setLocationRelativeTo(null);
 
-    	JPanel panelPrincipal = new JPanel();
-    	panelPrincipal.setLayout(new BorderLayout());
-    	panelPrincipal.setBackground(Color.blue);
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
+        panelPrincipal.setBackground(Color.blue);
 
-    	JPanel panelBotones = new JPanel();
-    	panelBotones.setBorder(new LineBorder(Color.green,60,false));
-    	panelBotones.setLayout(new GridLayout(4, 4, 10, 10));
-    	
+        JPanel panelBotones = new JPanel();
+        panelBotones.setBorder(new LineBorder(Color.black, 60, false));
+        panelBotones.setLayout(new GridLayout(4, 4, 10, 10));
 
-    	String btns[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15"};
-    	
-    	List<String> listaNumeros= Arrays.asList(btns);
-    	Collections.shuffle(listaNumeros);
 
-    	for (int i = 0; i < 15; i++) {
-    	JButton boton = new JButton(btns[i]);
-    	boton.setBackground(Color.gray);
-    	boton.setForeground(Color.WHITE);
-    	panelBotones.add(boton);
+        String btns[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
 
-    	
-    	if(i==14)
-    	{
-    		JButton botonVacio = new JButton("");
-    		botonVacio.setBackground(Color.BLUE);
-    		botonVacio.setForeground(Color.WHITE);
-        	panelBotones.add(botonVacio);
-        	
-        	
-        	
-    	}
-    	
-      
+        List<String> listaNumeros = Arrays.asList(btns);
+        Collections.shuffle(listaNumeros);
 
-    	
+        JButton[] botones = new JButton[btns.length];
+        final JButton[] botonVacio = new JButton[1]; 
 
-    	panelPrincipal.add(panelBotones, BorderLayout.CENTER);
-    	add(panelPrincipal);
-    	setVisible(true);
-    	}
+        for (int i = 0; i < 15; i++) {
+            JButton boton = new JButton(btns[i]);
+            boton.setBackground(Color.gray);
+            boton.setForeground(Color.WHITE);
+            boton.setFont(new Font("Arial", Font.BOLD, 48));
+            botones[i] = boton;
+            panelBotones.add(boton);
+
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (esAdyacenteVacio(boton, botonVacio[0])) {
+                        String textoBoton = boton.getText();
+                        boton.setText("");
+                        botonVacio[0].setText(textoBoton);
+                        botonVacio[0].setBackground(Color.gray);
+                        botonVacio[0].setForeground(Color.WHITE);
+                        botonVacio[0] = boton;
+                        
+                        
+                    }
+                }
+            });
+
+            if (i == 14) {
+                botonVacio[0] = new JButton("");
+                botonVacio[0].setBackground(Color.gray);
+                botonVacio[0].setForeground(Color.WHITE);
+                botonVacio[0].setFont(new Font("Arial", Font.BOLD, 48));
+                panelBotones.add(botonVacio[0]);
+            }
+        }
+
+        panelPrincipal.add(panelBotones, BorderLayout.CENTER);
+        add(panelPrincipal);
+        setVisible(true);
     }
 
-    
+    private boolean esAdyacenteVacio(JButton boton, JButton botonVacio) {
+        Point posicionBoton = obtenerPosicionBoton(boton);
+        Point posicionVacio = obtenerPosicionBoton(botonVacio);
+        return Math.abs(posicionBoton.getX() - posicionVacio.getX()) +
+                Math.abs(posicionBoton.getY() - posicionVacio.getY()) == 1;
+    }
+
+    private Point obtenerPosicionBoton(JButton boton) {
+        Point posicion = new Point();
+        Component[] componentes = ((JPanel) boton.getParent()).getComponents();
+        for (int i = 0; i < componentes.length; i++) {
+            if (componentes[i] == boton) {
+                posicion.setLocation(i % 4, i / 4);
+                break;
+            }
+        }
+        return posicion;
+    }
 }
 
 
