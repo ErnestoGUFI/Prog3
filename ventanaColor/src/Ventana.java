@@ -73,7 +73,7 @@ public class Ventana extends JFrame {
         // Llamo la función para iniciar el panel
         this.iniciarComponentes();
 
-        
+      
         
        
      // Modifica la visibilidad
@@ -83,13 +83,9 @@ public class Ventana extends JFrame {
    
    
     public void iniciarComponentes() {
-	    //this.login();
+	   
 	    this.registro();
-	    //this.admin();
-	    //this.calculadora();
-	    //this.interes();
-	    //this.botones();
-    	//this.juegoNumbers();
+	  
     	
     }
     
@@ -104,24 +100,12 @@ public class Ventana extends JFrame {
     
  
     public void login() {
+    	
+    	menu();
+    	
     JPanel login = new JPanel();
     login.setLayout(null);
     login.setBackground(Color.decode("#3F66B0"));
-    
-    //barra
-    JMenuBar barra = new JMenuBar();
-    //texto que se muestra en la opcion de el menu
-    JMenu menu_file = new JMenu("Archivo");    
-    //opciones que se muestran en el menu
-    JMenuItem open_item = new JMenuItem("abrir archivo...");
-    JMenuItem create_item = new JMenuItem("crear archivo...");
-   
-    //añadir cada cosa correspondiente al menu
-    barra.add(menu_file);
-    menu_file.add(open_item);
-    menu_file.add(create_item);
-  
-   getContentPane().add(barra, BorderLayout.NORTH);
     
     JLabel loginDentro = new JLabel();
     loginDentro.setLocation(140, 150);
@@ -130,9 +114,7 @@ public class Ventana extends JFrame {
     loginDentro.setSize(700,500);
     loginDentro.setOpaque(rootPaneCheckingEnabled);
     login.add(loginDentro);
-    
-   
-    
+
     JLabel loginTag = new JLabel("Inicio De Sesion",0);
     loginTag.setSize(500, 80);
     loginTag.setLocation(240, 40);
@@ -154,11 +136,7 @@ public class Ventana extends JFrame {
     loginTag2.setForeground(Color.decode("#FFCC00"));
     loginDentro.add(loginTag2);
     
-    
 
-
-   
-    
 
     //texto de usuario
     JLabel usuario = new JLabel("INGRESA TU USUARIO");
@@ -172,7 +150,6 @@ public class Ventana extends JFrame {
     JTextField usuarioTexto = new JTextField();
     usuarioTexto.setSize(400, 50);
     usuarioTexto.setLocation(150, 180);
-    usuarioTexto.setBorder(new LineBorder(Color.black,2,true));
     loginDentro.add(usuarioTexto);
 
     //texto de contraseña
@@ -269,13 +246,7 @@ public class Ventana extends JFrame {
     label2.setLocation(110, 290);
     label2.setOpaque(false);
     loginDentro.add(label2);
-    
-    
-    
-   
-   
-   
-   
+
     getContentPane().add(login);
    
     }
@@ -284,41 +255,29 @@ public class Ventana extends JFrame {
     
     public void registro() {
 
+    	menu();
+    	
         JPanel registro = new JPanel();
         registro.setLayout(null);
         registro.setSize(getWidth(), getHeight());
         registro.setLocation(0, 0);
-        registro.setBackground(Color.pink);
-        
-      //barra
-        JMenuBar barra = new JMenuBar();
-        //texto que se muestra en la opcion de el menu
-        JMenu menu_file = new JMenu("Archivo");    
-        //opciones que se muestran en el menu
-        JMenuItem open_item = new JMenuItem("abrir archivo...");
-        JMenuItem create_item = new JMenuItem("crear archivo...");
-       
-        //añadir cada cosa correspondiente al menu
-        barra.add(menu_file);
-        menu_file.add(open_item);
-        menu_file.add(create_item);
+        registro.setBackground(new Color(126, 25, 33));
       
-       getContentPane().add(barra, BorderLayout.NORTH);
-       
-        JLabel registerTag = new JLabel("Registrarse",0);
-        registerTag.setSize(200, 80);
-        registerTag.setLocation(385, 60);
-        registerTag.setFont(new Font("Arial", Font.BOLD, 24));
-        registerTag.setForeground(Color.white);
+        JLabel registerTag = new JLabel("Registrate con nosotros!",0);
+        registerTag.setSize(560, 80);
+        registerTag.setLocation(206, 60);
+        registerTag.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 48));
+        registerTag.setForeground(new Color(244, 145, 42));
         registerTag.setBackground(Color.black);
         registro.add(registerTag);
        
        
         //Nombre de usuario
         JLabel nombreUsuario = new JLabel("Ingresa Tu Nombre",0);
-        nombreUsuario.setSize(226, 30);
-        nombreUsuario.setLocation(52, 168);
-        nombreUsuario.setFont(new Font("Arial", Font.BOLD, 24));
+        nombreUsuario.setForeground(new Color(0, 0, 0));
+        nombreUsuario.setSize(302, 30);
+        nombreUsuario.setLocation(33, 168);
+        nombreUsuario.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
         nombreUsuario.setBackground(Color.yellow);
         registro.add(nombreUsuario);
        
@@ -330,22 +289,24 @@ public class Ventana extends JFrame {
        
        
         //ingrese biografia
-        JTextArea ingresarApellido= new JTextArea();
+        JTextField ingresarApellido= new JTextField();
         ingresarApellido.setSize(400, 40);
         ingresarApellido.setLocation(527, 199);
         registro.add(ingresarApellido);
        
      
         JLabel lblIngresaTuApellido = new JLabel("Ingresa tu apellido", SwingConstants.CENTER);
-        lblIngresaTuApellido.setFont(new Font("Arial", Font.BOLD, 24));
+        lblIngresaTuApellido.setForeground(new Color(0, 0, 0));
+        lblIngresaTuApellido.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
         lblIngresaTuApellido.setBackground(Color.YELLOW);
-        lblIngresaTuApellido.setBounds(683, 168, 267, 30);
+        lblIngresaTuApellido.setBounds(666, 168, 267, 30);
         registro.add(lblIngresaTuApellido);
         
         JLabel correo = new JLabel("Correo Electronico", SwingConstants.CENTER);
-        correo.setFont(new Font("Arial", Font.BOLD, 24));
+        correo.setForeground(new Color(0, 0, 0));
+        correo.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
         correo.setBackground(Color.YELLOW);
-        correo.setBounds(264, 261, 226, 30);
+        correo.setBounds(240, 261, 260, 30);
         registro.add(correo);
         
         JTextField textField = new JTextField();
@@ -353,9 +314,9 @@ public class Ventana extends JFrame {
         registro.add(textField);
         
         JLabel contrasena = new JLabel("Contraseña", SwingConstants.CENTER);
-        contrasena.setFont(new Font("Arial", Font.BOLD, 24));
-        contrasena.setBackground(Color.YELLOW);
-        contrasena.setBounds(249, 342, 172, 30);
+        contrasena.setForeground(new Color(0, 0, 0));
+        contrasena.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        contrasena.setBounds(239, 342, 172, 30);
         registro.add(contrasena);
         
         JPasswordField textField_1 = new JPasswordField();
@@ -363,9 +324,10 @@ public class Ventana extends JFrame {
         registro.add(textField_1);
         
         JLabel confirmarContrasena = new JLabel("Confirmar contraseña", SwingConstants.CENTER);
-        confirmarContrasena.setFont(new Font("Arial", Font.BOLD, 24));
+        confirmarContrasena.setForeground(new Color(0, 0, 0));
+        confirmarContrasena.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
         confirmarContrasena.setBackground(Color.YELLOW);
-        confirmarContrasena.setBounds(233, 424, 326, 30);
+        confirmarContrasena.setBounds(210, 424, 326, 30);
         registro.add(confirmarContrasena);
         
         JPasswordField textField_2 = new JPasswordField();
@@ -373,11 +335,14 @@ public class Ventana extends JFrame {
         registro.add(textField_2);
         
         JCheckBox aceptarCondiciones = new JCheckBox("Aceptar terminos y condiciones");
-        aceptarCondiciones.setBounds(393, 556, 192, 23);
+        aceptarCondiciones.setForeground(new Color(0, 0, 0));
+        aceptarCondiciones.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 16));
+        aceptarCondiciones.setBounds(362, 557, 245, 23);
         aceptarCondiciones.setOpaque(false);
         registro.add(aceptarCondiciones);
         
-        JButton acceder = new JButton("ACCEDER");
+        JButton acceder = new JButton("Acceder");
+        acceder.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 16));
         acceder.setBounds(385,611,200,20);
         registro.add(acceder);
         
@@ -437,37 +402,73 @@ public class Ventana extends JFrame {
         	}
         });
         
-        JButton probar = new JButton("Probar Inicio de sesion");
-        probar.setBounds(385,642,200,20);
-        registro.add(probar);
         
-        probar.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-        	
-        		getContentPane().removeAll();
-        		login();
-        		getContentPane().revalidate();
-        		getContentPane().repaint();
-        		
-			
-    			
-			
         
-        }
-        });
-    
-    		
-    			
-   
-       
+     
+        
         getContentPane().add(registro);
         
+    }
+    
+    private void menu() {
+        JMenuBar barra = new JMenuBar();
         
         
+        JMenu cuenta = new JMenu("Cuenta");
+        barra.add(cuenta);
+        
+        JMenuItem login = new JMenuItem("Login");
+        login.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().removeAll();
+                login();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+            }
+        });
 
-       
-       
-       
+        JMenuItem registro = new JMenuItem("Registro");
+        registro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().removeAll();
+                registro();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+            }
+        });
+        
+        cuenta.add(login);
+        cuenta.add(registro);
+        
+        JMenu usuarios = new JMenu("Usuarios");
+        barra.add(usuarios);
+        
+        JMenuItem alta = new JMenuItem("Alta");
+        
+        JMenuItem baja = new JMenuItem("Baja");
+        
+        JMenuItem consultar = new JMenuItem("Consultar");
+        
+        usuarios.add(alta);
+        usuarios.add(baja);
+        usuarios.add(consultar);
+        
+        
+        
+        JMenu ayuda = new JMenu("Ayuda");
+        barra.add(ayuda);
+        
+        JMenuItem crearUser = new JMenuItem("¿Cómo crear un usuario?");
+        
+        JMenuItem accederSistema = new JMenuItem("¿Cómo acceder al sistema?");
+        
+        JMenuItem olvide = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
+        
+        ayuda.add(crearUser);
+        ayuda.add(accederSistema);
+        ayuda.add(olvide);
+
+        getContentPane().add(barra, BorderLayout.NORTH);
     }
 }
 
