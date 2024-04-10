@@ -41,7 +41,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
 
 public class Ventana extends JFrame {
    
@@ -80,13 +82,13 @@ public class Ventana extends JFrame {
    
    
     public void iniciarComponentes() {
-	    //this.login();
-	    //this.registro();
+	    this.login();
+	    this.registro();
 	    //this.admin();
 	    //this.calculadora();
 	    //this.interes();
 	    //this.botones();
-    	this.juegoNumbers();
+    	//this.juegoNumbers();
     	
     }
     /*
@@ -356,7 +358,7 @@ public class Ventana extends JFrame {
         panelNuevo.add(botones);
 
        
-        this.add(panelCentral);
+        getContentPane().add(panelCentral);
     }
 
     public void interes()
@@ -479,7 +481,7 @@ public class Ventana extends JFrame {
 		cantidad.setBackground(Color.white);
 		rojo.add(cantidad);
 		
-		this.add(panel);
+		getContentPane().add(panel);
     }
 
     public void calculadora() {
@@ -543,7 +545,7 @@ public class Ventana extends JFrame {
 
         panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
         panelPrincipal.add(panelVerticalDerecha, BorderLayout.EAST);
-        this.add(panelPrincipal);
+        getContentPane().add(panelPrincipal);
     }
  
     public void login() {
@@ -653,6 +655,8 @@ public class Ventana extends JFrame {
     			}else {
     				contrasenaTexto.setBorder(new LineBorder(Color.green,2,true));
     			}
+    			
+    			JOptionPane.showMessageDialog(null, "Todavia no se agrega la funcionalidad para verificar si tu usuario existe previamente, adios", "Alto ahi", JOptionPane.INFORMATION_MESSAGE);
     	}
     });
  
@@ -668,6 +672,16 @@ public class Ventana extends JFrame {
     botonCrear.setBackground(Color.decode("#FFCC00"));
     botonCrear.setFont(new Font("Arial Black", Font.ITALIC, 24));
     login.add(botonCrear);
+    
+    botonCrear.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	
+				registro();
+    			login.setVisible(false);
+			
+        
+        }
+        });
     
     //icono de perfil
     ImageIcon imagen = new ImageIcon (getClass().getResource("icon.png"));
@@ -690,7 +704,7 @@ public class Ventana extends JFrame {
    
    
    
-    this.add(login);
+    getContentPane().add(login);
    
     }
 
@@ -785,7 +799,7 @@ public class Ventana extends JFrame {
    
     this.setJMenuBar(barra);
    
-    this.add(admin_panel);
+    getContentPane().add(admin_panel);
     }
     
     public void registro() {
@@ -796,114 +810,80 @@ public class Ventana extends JFrame {
         registro.setLocation(0, 0);
         registro.setBackground(Color.pink);
        
-        JLabel registerTag = new JLabel("Registro",0);
+        JLabel registerTag = new JLabel("Registrarse",0);
         registerTag.setSize(200, 80);
-        registerTag.setLocation(640, 20);
+        registerTag.setLocation(385, 60);
         registerTag.setFont(new Font("Arial", Font.BOLD, 24));
         registerTag.setForeground(Color.white);
-        registerTag.setOpaque(true);
         registerTag.setBackground(Color.black);
         registro.add(registerTag);
        
        
         //Nombre de usuario
-        JLabel nombreUsuario = new JLabel("Nombre de usuario",0);
-        nombreUsuario.setSize(400, 40);
-        nombreUsuario.setLocation(540, 150);
+        JLabel nombreUsuario = new JLabel("Ingresa Tu Nombre",0);
+        nombreUsuario.setSize(226, 30);
+        nombreUsuario.setLocation(52, 168);
         nombreUsuario.setFont(new Font("Arial", Font.BOLD, 24));
         nombreUsuario.setBackground(Color.yellow);
-        nombreUsuario.setOpaque(true);
         registro.add(nombreUsuario);
        
         //ingresar usuario
         JTextField ingresarUsuario = new JTextField();
         ingresarUsuario.setSize(400, 40);
-        ingresarUsuario.setLocation(540, 200);
+        ingresarUsuario.setLocation(52, 199);
         registro.add(ingresarUsuario);
-       
-        //texto biografia
-        JLabel biografia = new JLabel("Biografia",0);
-        biografia.setSize(350, 40);
-        biografia.setLocation(560, 250);
-        biografia.setFont(new Font("Arial", Font.BOLD, 24));
-        biografia.setBackground(Color.green);
-        biografia.setOpaque(true);
-        registro.add(biografia);
        
        
         //ingrese biografia
-        JTextArea textoBio= new JTextArea();
-        textoBio.setSize(400, 80);
-        textoBio.setLocation(535, 300);
-        registro.add(textoBio);
+        JTextArea ingresarApellido= new JTextArea();
+        ingresarApellido.setSize(400, 40);
+        ingresarApellido.setLocation(527, 199);
+        registro.add(ingresarApellido);
        
-      //texto preferencias
-        JLabel preferencias = new JLabel("Preferencias",0);
-        preferencias.setSize(350, 40);
-        preferencias.setLocation(560,390);
-        preferencias.setFont(new Font("Arial", Font.BOLD, 24));
-        preferencias.setBackground(Color.red);
-        preferencias.setOpaque(true);
-        registro.add(preferencias);
-       
-        // Checkbox para prefrencias 1
-        JCheckBox preferencia1 = new JCheckBox("Hombres");
-        preferencia1.setOpaque(false);
-        preferencia1.setSize(150, 20);
-        preferencia1.setLocation(550, 450);
-        registro.add(preferencia1);
-        // Checkbox para prefrencias 2
-        JCheckBox preferencia2 = new JCheckBox("Mujeres");
-        preferencia2.setOpaque(false);
-        preferencia2.setSize(150, 20);
-        preferencia2.setLocation(700, 450);
-        registro.add(preferencia2);
-        // Checkbox para prefrencias 3
-        JCheckBox preferencia3 = new JCheckBox("Otros");
-        preferencia3.setOpaque(false);
-        preferencia3.setSize(150, 20);
-        preferencia3.setLocation(850, 450);
-        registro.add(preferencia3);
-       
-        //texto de terminos
-        JLabel terminos = new JLabel("Terminos",0);
-        terminos.setSize(200, 40);
-        terminos.setLocation(640, 500);
-        terminos.setFont(new Font("Arial", Font.BOLD, 24));
-        terminos.setForeground(Color.white);
-        terminos.setOpaque(true);
-        terminos.setBackground(Color.blue);
-        registro.add(terminos);
-       
-       
-       
-        //boton aceptar terminos
-        JRadioButton botonAceptar = new JRadioButton("Acepto");
-        botonAceptar.setBounds(550,550, 150, 20);
-        botonAceptar.setFont(new Font("Arial", Font.BOLD, 24));
-        botonAceptar.setOpaque(false);
-        registro.add(botonAceptar);
-       
-        //boton denegar terminos
-        JRadioButton botonDenegar = new JRadioButton("Deniego");
-        botonDenegar.setBounds(800,550, 150, 20);
-        botonDenegar.setFont(new Font("Arial", Font.BOLD, 24));
-        botonDenegar.setOpaque(false);
-        registro.add(botonDenegar);
-       
-        //botones de preferencia
-        ButtonGroup terminosBoton = new ButtonGroup();
-        terminosBoton.add(botonAceptar);
-        terminosBoton.add(botonDenegar);
-       
-        //arreglo de locaciones y combobox
-        String locacionesArreglo[]={"Centro","Camino Real","Pedregal"};
-        JComboBox locaciones = new JComboBox(locacionesArreglo);
-        locaciones.setBounds(650,600,150,20);
-        registro.add(locaciones);
+     
+        JLabel lblIngresaTuApellido = new JLabel("Ingresa tu apellido", SwingConstants.CENTER);
+        lblIngresaTuApellido.setFont(new Font("Arial", Font.BOLD, 24));
+        lblIngresaTuApellido.setBackground(Color.YELLOW);
+        lblIngresaTuApellido.setBounds(683, 168, 267, 30);
+        registro.add(lblIngresaTuApellido);
+        
+        JLabel correo = new JLabel("Correo Electronico", SwingConstants.CENTER);
+        correo.setFont(new Font("Arial", Font.BOLD, 24));
+        correo.setBackground(Color.YELLOW);
+        correo.setBounds(264, 261, 226, 30);
+        registro.add(correo);
+        
+        textField = new JTextField();
+        textField.setBounds(249, 291, 500, 40);
+        registro.add(textField);
+        
+        JLabel contrasena = new JLabel("Contraseña", SwingConstants.CENTER);
+        contrasena.setFont(new Font("Arial", Font.BOLD, 24));
+        contrasena.setBackground(Color.YELLOW);
+        contrasena.setBounds(249, 342, 172, 30);
+        registro.add(contrasena);
+        
+        textField_1 = new JPasswordField();
+        textField_1.setBounds(249, 373, 500, 40);
+        registro.add(textField_1);
+        
+        JLabel confirmarContrasena = new JLabel("Confirmar contraseña", SwingConstants.CENTER);
+        confirmarContrasena.setFont(new Font("Arial", Font.BOLD, 24));
+        confirmarContrasena.setBackground(Color.YELLOW);
+        confirmarContrasena.setBounds(233, 424, 326, 30);
+        registro.add(confirmarContrasena);
+        
+        textField_2 = new JPasswordField();
+        textField_2.setBounds(249, 454, 500, 40);
+        registro.add(textField_2);
+        
+        JCheckBox aceptarCondiciones = new JCheckBox("Aceptar terminos y condiciones");
+        aceptarCondiciones.setBounds(393, 556, 192, 23);
+        aceptarCondiciones.setOpaque(false);
+        registro.add(aceptarCondiciones);
         
         JButton acceder = new JButton("ACCEDER");
-        acceder.setBounds(630,650,200,20);
+        acceder.setBounds(385,611,200,20);
         registro.add(acceder);
         
      
@@ -913,34 +893,57 @@ public class Ventana extends JFrame {
         	
         	public void actionPerformed(ActionEvent e) {
         		String usr = ingresarUsuario.getText();
-        		String bio = new String(textoBio.getText());
+        		String apellido =ingresarApellido.getText();
+        		String correoCheck = textField.getText();
+        		String contra = textField_1.getText();
+        		String confirmar = textField_2.getText();
         		
         		if (usr.length()<=0) {
         			
         			ingresarUsuario.setBorder(new LineBorder(Color.red,2,true));
         			
-            		System.out.println("no jala");
-            	
         		}else {
         			ingresarUsuario.setBorder(new LineBorder(Color.green,2,true));
         			
         			}
-        		if(bio.length()<=0) {
+        		if(apellido.length()<=0) {
         			
-        			textoBio.setBorder(new LineBorder(Color.red,2,true));
+        			ingresarApellido.setBorder(new LineBorder(Color.red,2,true));
         			
-        			System.out.println("no jala");
 
         		}else {
-        			textoBio.setBorder(new LineBorder(Color.green,2,true));
+        			ingresarApellido.setBorder(new LineBorder(Color.green,2,true));
         			}
         		
+        		if (correoCheck.length()<=0)
+        		{
+        			textField.setBorder(new LineBorder(Color.red,2,true));
+        		}else {
+        			textField.setBorder(new LineBorder(Color.green,2,true));
+        		}
+        		
+        		if(contra.length()>0 && contra.equals(confirmar))
+        		{
+        			textField_1.setBorder(new LineBorder(Color.green,2,true));
+        			textField_2.setBorder(new LineBorder(Color.green,2,true));
+        		}
+        		else
+        		{
+        			textField_1.setBorder(new LineBorder(Color.red,2,true));
+        			textField_2.setBorder(new LineBorder(Color.red,2,true));
+        		}
+        		
+        		if (usr.length() > 0 && apellido.length() > 0 && correoCheck.length() > 0 && contra.length() > 0 && contra.equals(confirmar)) {
+        		    JOptionPane.showMessageDialog(null, "¡Registro exitoso!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        		} else {
+        		    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
+        		}
         			
         	}
         });
         
         JButton probar = new JButton("Probar Inicio de sesion");
-        probar.setBounds(630,700,200,20);
+        probar.setBounds(385,642,200,20);
         registro.add(probar);
         
         probar.addActionListener(new ActionListener() {
@@ -957,7 +960,10 @@ public class Ventana extends JFrame {
     			
    
        
-        this.add(registro);
+        getContentPane().add(registro);
+        
+        
+        
 
        
        
@@ -1071,7 +1077,7 @@ public class Ventana extends JFrame {
         superBoton.setBounds(500, 600, 200, 20);
         botonesPanel.add(superBoton);
 
-        this.add(botonesPanel);
+        getContentPane().add(botonesPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -1088,14 +1094,13 @@ public class Ventana extends JFrame {
         panelBotones.setBorder(new LineBorder(Color.black, 60, false));
         panelBotones.setLayout(new GridLayout(4, 4, 10, 10));
 
-
         String btns[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
 
         List<String> listaNumeros = Arrays.asList(btns);
         Collections.shuffle(listaNumeros);
 
         JButton[] botones = new JButton[btns.length];
-        final JButton[] botonVacio = new JButton[1]; 
+        final JButton[] botonVacio = new JButton[1];
 
         for (int i = 0; i < 15; i++) {
             JButton boton = new JButton(btns[i]);
@@ -1115,8 +1120,6 @@ public class Ventana extends JFrame {
                         botonVacio[0].setBackground(Color.gray);
                         botonVacio[0].setForeground(Color.WHITE);
                         botonVacio[0] = boton;
-                        
-                        
                     }
                 }
             });
@@ -1131,9 +1134,84 @@ public class Ventana extends JFrame {
         }
 
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
-        add(panelPrincipal);
+
+        // Agregar botones de pausa y reanudación
+        JButton pausaButton = new JButton("Pausar");
+        JButton reanudarButton = new JButton("Reanudar");
+
+        pausaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pausarJuego();
+            }
+        });
+
+        reanudarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                reanudarJuego();
+            }
+        });
+
+        JButton reiniciarButton = new JButton("Reiniciar");
+        reiniciarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	segundos = 0;
+                pausado = false;
+                remove(panelPrincipal);
+                juegoNumbers();
+            }
+        });
+
+        JPanel panelEste = new JPanel();
+        panelEste.setLayout(new GridLayout(4, 1));
+        panelEste.add(pausaButton);
+        panelEste.add(reanudarButton);
+        panelEste.add(reiniciarButton);
+
+        // Agregar temporizador
+        JLabel tiempoLabel = new JLabel("Tiempo: 00:00");
+        panelEste.add(tiempoLabel);
+        iniciarTemporizador(tiempoLabel);
+
+        panelPrincipal.add(panelEste, BorderLayout.EAST);
+
+        getContentPane().add(panelPrincipal);
         setVisible(true);
     }
+
+    private Timer timer;
+    private int segundos;
+    private boolean pausado;
+    private JTextField textField;
+    private JTextField textField_1;
+    private JTextField textField_2;
+
+    private void iniciarTemporizador(JLabel tiempoLabel) {
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!pausado) { // Solo actualiza el tiempo si no está pausado
+                    segundos++;
+                    int minutos = segundos / 60;
+                    int segundosRestantes = segundos % 60;
+                    tiempoLabel.setText(String.format("Tiempo: %02d:%02d", minutos, segundosRestantes));
+                }
+            }
+        });
+        timer.start();
+    }
+
+    private void pausarJuego() {
+        pausado = true;
+    }
+
+    private void reanudarJuego() {
+        pausado = false;
+    }
+
+   
 
     private boolean esAdyacenteVacio(JButton boton, JButton botonVacio) {
         Point posicionBoton = obtenerPosicionBoton(boton);
