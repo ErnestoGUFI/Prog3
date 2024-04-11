@@ -84,7 +84,8 @@ public class Ventana extends JFrame {
    
     public void iniciarComponentes() {
 	   
-	    this.registro();
+	   this.inicio();
+	 
 	  
     	
     }
@@ -257,16 +258,14 @@ public class Ventana extends JFrame {
 
     	menu();
     	
-        JPanel registro = new JPanel();
-        registro.setLayout(null);
-        registro.setSize(getWidth(), getHeight());
-        registro.setLocation(0, 0);
-        registro.setBackground(new Color(126, 25, 33));
+    	JPanel registro = new JPanel();
+    	registro .setLayout(null);
+        registro.setBackground(new Color(128, 0, 128));
       
         JLabel registerTag = new JLabel("Registrate con nosotros!",0);
-        registerTag.setSize(560, 80);
-        registerTag.setLocation(206, 60);
-        registerTag.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 48));
+        registerTag.setSize(700, 80);
+        registerTag.setLocation(130, 60);
+        registerTag.setFont(new Font("Arial Black", Font.ITALIC, 48));
         registerTag.setForeground(new Color(244, 145, 42));
         registerTag.setBackground(Color.black);
         registro.add(registerTag);
@@ -277,7 +276,7 @@ public class Ventana extends JFrame {
         nombreUsuario.setForeground(new Color(0, 0, 0));
         nombreUsuario.setSize(302, 30);
         nombreUsuario.setLocation(33, 168);
-        nombreUsuario.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        nombreUsuario.setFont(new Font("Arial Black", Font.ITALIC, 24));
         nombreUsuario.setBackground(Color.yellow);
         registro.add(nombreUsuario);
        
@@ -297,14 +296,14 @@ public class Ventana extends JFrame {
      
         JLabel lblIngresaTuApellido = new JLabel("Ingresa tu apellido", SwingConstants.CENTER);
         lblIngresaTuApellido.setForeground(new Color(0, 0, 0));
-        lblIngresaTuApellido.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        lblIngresaTuApellido.setFont(new Font("Arial Black", Font.ITALIC, 24));
         lblIngresaTuApellido.setBackground(Color.YELLOW);
         lblIngresaTuApellido.setBounds(666, 168, 267, 30);
         registro.add(lblIngresaTuApellido);
         
         JLabel correo = new JLabel("Correo Electronico", SwingConstants.CENTER);
         correo.setForeground(new Color(0, 0, 0));
-        correo.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        correo.setFont(new Font("Arial Black", Font.ITALIC, 24));
         correo.setBackground(Color.YELLOW);
         correo.setBounds(240, 261, 260, 30);
         registro.add(correo);
@@ -315,7 +314,7 @@ public class Ventana extends JFrame {
         
         JLabel contrasena = new JLabel("Contraseña", SwingConstants.CENTER);
         contrasena.setForeground(new Color(0, 0, 0));
-        contrasena.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        contrasena.setFont(new Font("Arial Black", Font.ITALIC, 24));
         contrasena.setBounds(239, 342, 172, 30);
         registro.add(contrasena);
         
@@ -325,9 +324,9 @@ public class Ventana extends JFrame {
         
         JLabel confirmarContrasena = new JLabel("Confirmar contraseña", SwingConstants.CENTER);
         confirmarContrasena.setForeground(new Color(0, 0, 0));
-        confirmarContrasena.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 24));
+        confirmarContrasena.setFont(new Font("Arial Black", Font.ITALIC, 24));
         confirmarContrasena.setBackground(Color.YELLOW);
-        confirmarContrasena.setBounds(210, 424, 326, 30);
+        confirmarContrasena.setBounds(230, 424, 326, 30);
         registro.add(confirmarContrasena);
         
         JPasswordField textField_2 = new JPasswordField();
@@ -336,13 +335,13 @@ public class Ventana extends JFrame {
         
         JCheckBox aceptarCondiciones = new JCheckBox("Aceptar terminos y condiciones");
         aceptarCondiciones.setForeground(new Color(0, 0, 0));
-        aceptarCondiciones.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 16));
-        aceptarCondiciones.setBounds(362, 557, 245, 23);
+        aceptarCondiciones.setFont(new Font("Arial Black", Font.ITALIC, 16));
+        aceptarCondiciones.setBounds(330, 557, 350, 23);
         aceptarCondiciones.setOpaque(false);
         registro.add(aceptarCondiciones);
         
         JButton acceder = new JButton("Acceder");
-        acceder.setFont(new Font("Chinese Rocks Rg", Font.PLAIN, 16));
+        acceder.setFont(new Font("Arial Black", Font.ITALIC, 16));
         acceder.setBounds(385,611,200,20);
         registro.add(acceder);
         
@@ -410,9 +409,308 @@ public class Ventana extends JFrame {
         
     }
     
+    public void recover() {
+
+    	menu();
+    	
+    	JPanel recuperar = new JPanel();
+    	recuperar .setLayout(null);
+    	recuperar.setBackground(new Color(128, 0, 255));
+      
+        JLabel recoverTag = new JLabel("Recupera tu cuenta",0);
+        recoverTag.setSize(560, 80);
+        recoverTag.setLocation(206, 60);
+        recoverTag.setFont(new Font("Arial Black", Font.ITALIC, 48));
+        recoverTag.setForeground(new Color(244, 145, 42));
+        recoverTag.setBackground(Color.black);
+        recuperar.add(recoverTag);
+        
+        JLabel correo = new JLabel("Correo Electronico", SwingConstants.CENTER);
+        correo.setForeground(new Color(0, 0, 0));
+        correo.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        correo.setBackground(Color.YELLOW);
+        correo.setBounds(240, 261, 260, 30);
+        recuperar.add(correo);
+        
+        JTextField textField = new JTextField();
+        textField.setBounds(249, 291, 500, 40);
+        recuperar.add(textField);
+        
+        JButton acceder = new JButton("Recuperar");
+        acceder.setFont(new Font("Arial Black", Font.ITALIC, 16));
+        acceder.setBounds(385,611,200,20);
+        recuperar.add(acceder);
+        
+
+        
+        getContentPane().add(recuperar);
+        
+    }
+    
+    public void inicio() {
+
+    	menu();
+    	
+    	JPanel inicio = new JPanel();
+    	inicio .setLayout(null);
+    	inicio.setBackground(new Color(128, 0, 255));
+      
+        JLabel recoverTag = new JLabel("Bienvenido!",0);
+        recoverTag.setSize(560, 80);
+        recoverTag.setLocation(206, 280);
+        recoverTag.setFont(new Font("Arial Black", Font.ITALIC, 48));
+        recoverTag.setForeground(new Color(244, 145, 42));
+        recoverTag.setBackground(Color.black);
+        inicio.add(recoverTag);
+        
+        JLabel correo = new JLabel("Acceda a todos nuestros servicios arriba a la izquierda", SwingConstants.CENTER);
+        correo.setForeground(new Color(0, 0, 0));
+        correo.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        correo.setBackground(Color.YELLOW);
+        correo.setBounds(100, 350, 800, 30);
+        inicio.add(correo);
+        
+
+        
+        getContentPane().add(inicio);
+        
+    }
+    
+    public void comoCrear() {
+
+    	menu();
+    	
+    	JPanel registro = new JPanel();
+    	registro .setLayout(null);
+        registro.setBackground(new Color(128, 0, 128));
+      
+        JLabel registerTag = new JLabel("Registrate con nosotros!",0);
+        registerTag.setSize(700, 80);
+        registerTag.setLocation(130, 60);
+        registerTag.setFont(new Font("Arial Black", Font.ITALIC, 48));
+        registerTag.setForeground(new Color(244, 145, 42));
+        registerTag.setBackground(Color.black);
+        registro.add(registerTag);
+       
+       
+        //Nombre de usuario
+        JLabel nombreUsuario = new JLabel("Ingresa Tu Nombre",0);
+        nombreUsuario.setForeground(new Color(0, 0, 0));
+        nombreUsuario.setSize(302, 30);
+        nombreUsuario.setLocation(33, 168);
+        nombreUsuario.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        nombreUsuario.setBackground(Color.yellow);
+        registro.add(nombreUsuario);
+       
+        //ingresar usuario
+        JTextField ingresarUsuario = new JTextField();
+        ingresarUsuario.setSize(400, 40);
+        ingresarUsuario.setLocation(52, 199);
+        registro.add(ingresarUsuario);
+       
+       
+        //ingrese biografia
+        JTextField ingresarApellido= new JTextField();
+        ingresarApellido.setSize(400, 40);
+        ingresarApellido.setLocation(527, 199);
+        registro.add(ingresarApellido);
+       
+     
+        JLabel lblIngresaTuApellido = new JLabel("Ingresa tu apellido", SwingConstants.CENTER);
+        lblIngresaTuApellido.setForeground(new Color(0, 0, 0));
+        lblIngresaTuApellido.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        lblIngresaTuApellido.setBackground(Color.YELLOW);
+        lblIngresaTuApellido.setBounds(666, 168, 267, 30);
+        registro.add(lblIngresaTuApellido);
+        
+        JLabel correo = new JLabel("Correo Electronico", SwingConstants.CENTER);
+        correo.setForeground(new Color(0, 0, 0));
+        correo.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        correo.setBackground(Color.YELLOW);
+        correo.setBounds(240, 261, 260, 30);
+        registro.add(correo);
+        
+        JTextField textField = new JTextField();
+        textField.setBounds(249, 291, 500, 40);
+        registro.add(textField);
+        
+        JLabel contrasena = new JLabel("Contraseña", SwingConstants.CENTER);
+        contrasena.setForeground(new Color(0, 0, 0));
+        contrasena.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        contrasena.setBounds(239, 342, 172, 30);
+        registro.add(contrasena);
+        
+        JPasswordField textField_1 = new JPasswordField();
+        textField_1.setBounds(249, 373, 500, 40);
+        registro.add(textField_1);
+        
+        JLabel confirmarContrasena = new JLabel("Confirmar contraseña", SwingConstants.CENTER);
+        confirmarContrasena.setForeground(new Color(0, 0, 0));
+        confirmarContrasena.setFont(new Font("Arial Black", Font.ITALIC, 24));
+        confirmarContrasena.setBackground(Color.YELLOW);
+        confirmarContrasena.setBounds(230, 424, 326, 30);
+        registro.add(confirmarContrasena);
+        
+        JPasswordField textField_2 = new JPasswordField();
+        textField_2.setBounds(249, 454, 500, 40);
+        registro.add(textField_2);
+        
+        JCheckBox aceptarCondiciones = new JCheckBox("Aceptar terminos y condiciones");
+        aceptarCondiciones.setForeground(new Color(0, 0, 0));
+        aceptarCondiciones.setFont(new Font("Arial Black", Font.ITALIC, 16));
+        aceptarCondiciones.setBounds(330, 557, 350, 23);
+        aceptarCondiciones.setOpaque(false);
+        registro.add(aceptarCondiciones);
+        
+        JButton acceder = new JButton("Acceder");
+        acceder.setFont(new Font("Arial Black", Font.ITALIC, 16));
+        acceder.setBounds(385,611,200,20);
+        registro.add(acceder);
+        
+     
+        
+
+        
+        getContentPane().add(registro);
+        
+    }
+    
+    
+	public void comoIngresar() {
+	    	
+	    	menu();
+	    	
+	    JPanel login = new JPanel();
+	    login.setLayout(null);
+	    login.setBackground(Color.decode("#3F66B0"));
+	    
+	    JLabel loginDentro = new JLabel();
+	    loginDentro.setLocation(140, 150);
+	    loginDentro.setLayout(null);
+	    loginDentro.setBackground(Color.decode("#2B4582"));
+	    loginDentro.setSize(700,500);
+	    loginDentro.setOpaque(rootPaneCheckingEnabled);
+	    login.add(loginDentro);
+	
+	    JLabel loginTag = new JLabel("Inicio De Sesion",0);
+	    loginTag.setSize(500, 80);
+	    loginTag.setLocation(240, 40);
+	    loginTag.setFont(new Font("Arial Black", Font.ITALIC, 48));
+	    loginTag.setForeground(Color.white);
+	    login.add(loginTag);
+	    
+	    JLabel sinCuenta = new JLabel("No tienes una cuenta?",0);
+	    sinCuenta.setSize(500, 80);
+	    sinCuenta.setLocation(235, 640);
+	    sinCuenta.setFont(new Font("Arial Black", Font.ITALIC, 16));
+	    sinCuenta.setForeground(Color.white);
+	    login.add(sinCuenta);
+	    
+	    JLabel loginTag2 = new JLabel("Mi Cuenta",0);
+	    loginTag2.setSize(300, 80);
+	    loginTag2.setLocation(200, 10);
+	    loginTag2.setFont(new Font("Arial Black", Font.ITALIC, 48));
+	    loginTag2.setForeground(Color.decode("#FFCC00"));
+	    loginDentro.add(loginTag2);
+	    
+	
+	
+	    //texto de usuario
+	    JLabel usuario = new JLabel("INGRESA TU USUARIO");
+	    usuario.setSize(400, 20);
+	    usuario.setLocation(250, 150);
+	    usuario.setFont(new Font("Arial Black", Font.ITALIC, 16));
+	    usuario.setForeground(Color.WHITE);
+	    loginDentro.add(usuario);
+	
+	    //ingresar usuario
+	    JTextField usuarioTexto = new JTextField();
+	    usuarioTexto.setSize(400, 50);
+	    usuarioTexto.setLocation(150, 180);
+	    loginDentro.add(usuarioTexto);
+	
+	    //texto de contraseña
+	    JLabel contrasena = new JLabel("INGRESA TU CONTRASEÑA");
+	    contrasena.setSize(400, 20);
+	    contrasena.setLocation(220, 250);
+	    contrasena.setFont(new Font("Arial Black", Font.ITALIC, 16));
+	    contrasena.setForeground(Color.WHITE);
+	    loginDentro.add(contrasena);
+	
+	    //ingresar contraseña
+	    JPasswordField contrasenaTexto = new JPasswordField();
+	    contrasenaTexto.setSize(400, 50);
+	    contrasenaTexto.setLocation(150, 280);
+	    loginDentro.add(contrasenaTexto);
+	
+	    // Checkbox para recordar usuario
+	    JCheckBox recordarme = new JCheckBox("Recordarme");
+	    recordarme.setOpaque(false);
+	    recordarme.setSize(150, 20);
+	    recordarme.setLocation(150, 340);
+	    recordarme.setForeground(Color.WHITE);
+	    recordarme.setFont(new Font("Arial Black", Font.ITALIC, 16));
+	    loginDentro.add(recordarme);
+	   
+	
+	    // Botón de Acceder
+	    JButton botonAcceder = new JButton("Acceder");
+	    botonAcceder.setSize(150, 40);
+	    botonAcceder.setLocation(270, 400);
+	    botonAcceder.setBackground(Color.decode("#FFCC00"));
+	    botonAcceder.setFont(new Font("Arial Black", Font.ITALIC, 24));
+	
+	  
+	    
+	    loginDentro.add(botonAcceder);
+	    
+	    //boton de creacion de cuenta
+	   
+	    
+	    //icono de perfil
+	    ImageIcon imagen = new ImageIcon (getClass().getResource("icon.png"));
+	    JLabel label = new JLabel(imagen);
+	    label.setSize(32, 32);
+	    label.setLocation(110, 188);
+	    label.setOpaque(false);
+	    loginDentro.add(label);
+	    //icono de candado
+	    ImageIcon imagen2 = new ImageIcon (getClass().getResource("lock.png"));
+	    JLabel label2 = new JLabel(imagen2);
+	    label2.setSize(32, 32);
+	    label2.setLocation(110, 290);
+	    label2.setOpaque(false);
+	    loginDentro.add(label2);
+	
+	    getContentPane().add(login);
+	   
+	    }
+    	
+    
+    
+    
     private void menu() {
         JMenuBar barra = new JMenuBar();
         
+        JMenu inicio = new JMenu("Inicio");
+        barra.add(inicio);
+        
+        JMenuItem inicioOpcion = new JMenuItem("ir");
+        inicioOpcion.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+                inicio();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+				
+			}
+        
+        	
+        });
+        
+        inicio.add(inicioOpcion);
         
         JMenu cuenta = new JMenu("Cuenta");
         barra.add(cuenta);
@@ -437,15 +735,26 @@ public class Ventana extends JFrame {
             }
         });
         
+        JMenuItem recuperar = new JMenuItem("Recuperar Cuenta");
+        recuperar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().removeAll();
+                recover();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+            }
+        });
+        
         cuenta.add(login);
         cuenta.add(registro);
+        cuenta.add(recuperar);
         
         JMenu usuarios = new JMenu("Usuarios");
         barra.add(usuarios);
         
-        JMenuItem alta = new JMenuItem("Alta");
+        JMenuItem alta = new JMenuItem("Dar de alta");
         
-        JMenuItem baja = new JMenuItem("Baja");
+        JMenuItem baja = new JMenuItem("Dar de baja");
         
         JMenuItem consultar = new JMenuItem("Consultar");
         
@@ -459,8 +768,33 @@ public class Ventana extends JFrame {
         barra.add(ayuda);
         
         JMenuItem crearUser = new JMenuItem("¿Cómo crear un usuario?");
+        crearUser.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+                comoCrear();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+				
+			}
+        	
+        });
         
         JMenuItem accederSistema = new JMenuItem("¿Cómo acceder al sistema?");
+        
+        accederSistema.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+                comoIngresar();
+                getContentPane().revalidate();
+                getContentPane().repaint();
+				
+			}
+        	
+        });
         
         JMenuItem olvide = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
         
