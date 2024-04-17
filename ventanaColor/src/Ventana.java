@@ -15,6 +15,7 @@ public class Ventana extends JFrame implements KeyListener {
 
     private JPanel panelPaDibujar;
     private JButton reset;
+    private int x,y;
 
     public Ventana() {
         this.setSize(1080, 720);
@@ -26,12 +27,12 @@ public class Ventana extends JFrame implements KeyListener {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.BLUE);
-                g.fillRect(100, 100, 200, 200); 
+                g.fillRect(x, y, 200, 200); 
             }
         };
         panelPaDibujar.setLocation(0, 0);
         panelPaDibujar.setSize(1064, 600);
-        panelPaDibujar.setBackground(Color.WHITE);
+        panelPaDibujar.setBackground(Color.BLACK);
         getContentPane().add(panelPaDibujar,BorderLayout.CENTER);
 
         reset = new JButton("Reiniciar");
@@ -48,7 +49,39 @@ public class Ventana extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Tecla presionada: " + e.getKeyChar());
+        System.out.println("Tecla presionada: " + e.getKeyCode());
+        int tecla= e.getKeyCode();
+       
+        switch (tecla){
+        
+	        case 68 :
+	    	x=x+5;
+	    	repaint();
+	    	break;
+	    	
+	        
+		    case 65 :
+		    	x=x-5;
+		    	repaint();
+		    	break;
+		    	
+		    
+			case 83 :
+				y=y+5;
+				repaint();
+				break;
+				
+			
+			case 87 :
+				y=y-5;
+				repaint();
+				break;
+		
+		
+        }
+		
+        
+        
     }
 
     @Override
