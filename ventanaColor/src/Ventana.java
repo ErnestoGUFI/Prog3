@@ -18,7 +18,12 @@ public class Ventana extends JFrame implements KeyListener {
     private JButton reset;
     private Jugador cubito;
     private int largo = 1064, ancho = 600;
-    private Obstaculo obstaculo;
+    Obstaculo obstaculos[]= {
+    		new Obstaculo(300, 300, 200, 200),
+    		new Obstaculo(100, 300, 200, 200),
+    		new Obstaculo(500, 300, 200, 200)
+    		
+    };
 
     public Ventana() {
         this.setSize(1080, 720);
@@ -29,19 +34,22 @@ public class Ventana extends JFrame implements KeyListener {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Dibujar jugador
+                
                 g.setColor(Color.BLUE);
                 g.fillRect(cubito.getX(), cubito.getY(), cubito.getAnchura(), cubito.getAltura());
 
                 g.setColor(Color.RED);
-                g.fillRect(obstaculo.getBoundingBox().x, obstaculo.getBoundingBox().y,
-                        obstaculo.getBoundingBox().width, obstaculo.getBoundingBox().height);
+                for (Obstaculo obstaculo : obstaculos) {
+                g.fillRect(obstaculo.obstucalo().x, obstaculo.obstucalo().y,
+                        obstaculo.obstucalo().width, obstaculo.obstucalo().height);
+                }
+              
             }
         };
         panelPaDibujar.setLocation(0, 0);
         panelPaDibujar.setSize(largo, ancho);
         panelPaDibujar.setBackground(Color.BLACK);
-        getContentPane().add(panelPaDibujar, BorderLayout.CENTER);
+        getContentPane().add(panelPaDibujar);
 
         reset = new JButton("Reiniciar");
         reset.setBounds(476, 623, 100, 30);
@@ -49,7 +57,6 @@ public class Ventana extends JFrame implements KeyListener {
 
         cubito = new Jugador(100, 100, 50, 50);
 
-        obstaculo = new Obstaculo(300, 300, 200, 200);
 
         this.addKeyListener(this);
         this.setFocusable(true);
@@ -65,6 +72,8 @@ public class Ventana extends JFrame implements KeyListener {
 
         int x = cubito.getX();
         int y = cubito.getY();
+        boolean movimiento=true;
+        
 
         switch (tecla) {
             case KeyEvent.VK_D:
@@ -81,8 +90,14 @@ public class Ventana extends JFrame implements KeyListener {
                 break;
         }
 
+        
         Rectangle posicion = new Rectangle(x, y, cubito.getAnchura(), cubito.getAltura());
-        boolean colision = posicion.intersects(obstaculo.getBoundingBox());
+        boolean colision = false;
+        for (Obstaculo obstaculo : obstaculos) {
+        if(posicion.intersects(obstaculo.obstucalo())) {
+        	colision=true;
+        }
+        }
 
         if (!colision) {
             cubito.setX(x);
@@ -95,6 +110,9 @@ public class Ventana extends JFrame implements KeyListener {
 
         repaint();
     }
+
+    
+    
 
     @Override
     public void keyReleased(KeyEvent e) {

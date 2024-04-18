@@ -5,17 +5,17 @@ public class Obstaculo {
     private int y;
     private int ancho;
     private int alto;
-    private Rectangle boundingBox;
+    private Rectangle obstucalo;
 
     public Obstaculo(int x, int y, int ancho, int alto) {
         this.x = x;
         this.y = y;
         this.ancho = ancho;
         this.alto = alto;
-        this.boundingBox = new Rectangle(x, y, ancho, alto);
+        this.obstucalo = new Rectangle(x, y, ancho, alto);
     }
 
-    public Rectangle getBoundingBox() {
-        return boundingBox;
+    public Rectangle obstucalo() {
+        return obstucalo;
     }
 }
