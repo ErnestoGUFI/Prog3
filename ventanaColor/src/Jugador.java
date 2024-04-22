@@ -64,4 +64,6 @@ public class Jugador {
         y -= 5;
         rectangulo.y = y;
     }
+    
+    
 }
