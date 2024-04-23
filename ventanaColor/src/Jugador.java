@@ -44,26 +44,8 @@ public class Jugador {
     public Rectangle getBoundingBox() {
         return rectangulo;
     }
-
-    public void derecha() {
-        x += 5;
-        rectangulo.x = x;
-    }
-
-    public void izquierda() {
-        x -= 5;
-        rectangulo.x = x;
-    }
-
-    public void abajo() {
-        y += 5;
-        rectangulo.y = y;
-    }
-
-    public void arriba() {
-        y -= 5;
-        rectangulo.y = y;
-    }
+    
+    
     
     
 }

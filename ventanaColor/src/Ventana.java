@@ -26,79 +26,79 @@ public class Ventana extends JFrame implements KeyListener {
     private boolean llegoMeta;
     private Rectangle meta;
     private Timer timer;
+    private int direccionX = 0;
+    private int direccionY = 0;
 
-    Obstaculo obstaculos[]= {
+    Obstaculo obstaculos[] = {
         //bordes
         new Obstaculo(0, 0, 1, 600),
         new Obstaculo(799, 0, 1, 700),
         new Obstaculo(0, 0, 800, 1),
         new Obstaculo(0, 599, 800, 1),
-        
-        new Obstaculo(100,100, 50, 5), 
-        new Obstaculo(150,50, 150, 5),
-        new Obstaculo(300,50, 5, 50), 
-        new Obstaculo(300,50, 5, 50),
-        new Obstaculo(300,100, 100, 5),
-        new Obstaculo(50,150, 50, 5),
-        new Obstaculo(0,350, 100, 5),
-        new Obstaculo(50,200, 50, 5),
-        new Obstaculo(100,250, 50, 5),
-        new Obstaculo(150,200, 100, 5),
-
-        new Obstaculo(0, 0, 1080, 5), 
-        new Obstaculo(0, 50, 50, 5), 
-        new Obstaculo(50, 50, 5, 50), 
+        new Obstaculo(100, 100, 50, 5),
+        new Obstaculo(150, 50, 150, 5),
+        new Obstaculo(300, 50, 5, 50),
+        new Obstaculo(300, 50, 5, 50),
+        new Obstaculo(300, 100, 100, 5),
+        new Obstaculo(50, 150, 50, 5),
+        new Obstaculo(0, 350, 100, 5),
+        new Obstaculo(50, 200, 50, 5),
+        new Obstaculo(100, 250, 50, 5),
+        new Obstaculo(150, 200, 100, 5),
+        new Obstaculo(0, 0, 1080, 5),
+        new Obstaculo(0, 50, 50, 5),
+        new Obstaculo(50, 50, 5, 50),
         new Obstaculo(100, 0, 5, 150),
-        new Obstaculo(200,50, 5, 100), 
-        new Obstaculo(350,50, 5, 50), 
-        new Obstaculo(400,0, 5, 50), 
-        new Obstaculo(400,0, 5, 50),
-        new Obstaculo(50,150, 5, 150),
-        new Obstaculo(100,250, 5, 100),
-        new Obstaculo(100,250, 5, 100),
-        new Obstaculo(200,250, 100, 5),
-        new Obstaculo(300,250, 5, 150),
-        new Obstaculo(200,250, 5, 150),
-        new Obstaculo(150,250, 5, 150),
-        new Obstaculo(150,250, 5, 150),
-        new Obstaculo(0,400, 100, 5),
-        new Obstaculo(50,450, 300, 5),
-        new Obstaculo(0,500, 100, 5),
-        new Obstaculo(50,550, 100, 5),
-        new Obstaculo(150,450, 5, 100),
-        new Obstaculo(200,500, 5, 100),
-        new Obstaculo(250,450, 5, 100),
-        new Obstaculo(300,500, 5, 100),
-        new Obstaculo(350,450, 5, 100),
-        new Obstaculo(350,550, 200, 5),
-        new Obstaculo(350,550, 200, 5),
-        new Obstaculo(400,500, 200, 5),
-        new Obstaculo(350,450, 200, 5),
-        new Obstaculo(550,300, 200, 5),
-        new Obstaculo(550,350, 200, 5),
-        new Obstaculo(600,350, 5, 200),
-        new Obstaculo(650,400, 5, 200),
-        new Obstaculo(700,350, 5, 200),
-        new Obstaculo(500,250, 5, 200),
-        new Obstaculo(450,300, 5, 200),
-        new Obstaculo(550,200, 5, 200),
-        new Obstaculo(750,400, 5, 200),
-        new Obstaculo(750,105, 5, 200),
-        new Obstaculo(450,100,300, 5),
-        new Obstaculo(450,50,350, 5),
-        new Obstaculo(450,150,400, 5),
-        new Obstaculo(550,200,150, 5),
-        new Obstaculo(600,250,150, 5),
-        new Obstaculo(400,200,150, 5),
-        new Obstaculo(400,200,5, 200),
-        new Obstaculo(400,100,5, 300),
-        new Obstaculo(350,150,5, 300),
-        new Obstaculo(300,150,5, 300),
-        new Obstaculo(250,300,5, 200),
+        new Obstaculo(200, 50, 5, 100),
+        new Obstaculo(350, 50, 5, 50),
+        new Obstaculo(400, 0, 5, 50),
+        new Obstaculo(400, 0, 5, 50),
+        new Obstaculo(50, 150, 5, 150),
+        new Obstaculo(100, 250, 5, 100),
+        new Obstaculo(100, 250, 5, 100),
+        new Obstaculo(200, 250, 100, 5),
+        new Obstaculo(300, 250, 5, 150),
+        new Obstaculo(200, 250, 5, 150),
+        new Obstaculo(150, 250, 5, 150),
+        new Obstaculo(150, 250, 5, 150),
+        new Obstaculo(0, 400, 100, 5),
+        new Obstaculo(50, 450, 300, 5),
+        new Obstaculo(0, 500, 100, 5),
+        new Obstaculo(50, 550, 100, 5),
+        new Obstaculo(150, 450, 5, 100),
+        new Obstaculo(200, 500, 5, 100),
+        new Obstaculo(250, 450, 5, 100),
+        new Obstaculo(300, 500, 5, 100),
+        new Obstaculo(350, 450, 5, 100),
+        new Obstaculo(350, 550, 200, 5),
+        new Obstaculo(350, 550, 200, 5),
+        new Obstaculo(400, 500, 200, 5),
+        new Obstaculo(350, 450, 200, 5),
+        new Obstaculo(550, 300, 200, 5),
+        new Obstaculo(550, 350, 200, 5),
+        new Obstaculo(600, 350, 5, 200),
+        new Obstaculo(650, 400, 5, 200),
+        new Obstaculo(700, 350, 5, 200),
+        new Obstaculo(500, 250, 5, 200),
+        new Obstaculo(450, 300, 5, 200),
+        new Obstaculo(550, 200, 5, 200),
+        new Obstaculo(750, 400, 5, 200),
+        new Obstaculo(750, 105, 5, 200),
+        new Obstaculo(450, 100, 300, 5),
+        new Obstaculo(450, 50, 350, 5),
+        new Obstaculo(450, 150, 400, 5),
+        new Obstaculo(550, 200, 150, 5),
+        new Obstaculo(600, 250, 150, 5),
+        new Obstaculo(400, 200, 150, 5),
+        new Obstaculo(400, 200, 5, 200),
+        new Obstaculo(400, 100, 5, 300),
+        new Obstaculo(350, 150, 5, 300),
+        new Obstaculo(300, 150, 5, 300),
+        new Obstaculo(250, 300, 5, 200),
     };
 
     public Ventana() {
-    	getContentPane().setBackground(new Color(128, 0, 255));
+        getContentPane().setBackground(new Color(128, 0, 255));
         this.setSize(816, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -144,7 +144,7 @@ public class Ventana extends JFrame implements KeyListener {
                 requestFocus();
             }
         });
-        
+
         tiempoLabel = new JLabel("Tiempo: 0 segundos");
         tiempoLabel.setForeground(new Color(255, 255, 255));
         tiempoLabel.setFont(new Font("Agency FB", Font.PLAIN, 48));
@@ -157,9 +157,9 @@ public class Ventana extends JFrame implements KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
 
-        meta = new Rectangle(755,580, 45, 30);
+        meta = new Rectangle(755, 580, 45, 30);
 
-        // Configuración del timer para actualizar el tiempo cada segundo
+
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -181,24 +181,36 @@ public class Ventana extends JFrame implements KeyListener {
         if (!llegoMeta) {
             int tecla = e.getKeyCode();
 
-            int x = cubito.getX();
-            int y = cubito.getY();
-            boolean movimiento = true;
-
             switch (tecla) {
                 case KeyEvent.VK_D:
-                    x += 10;
+                    direccionX = 10;
+                    direccionY = 0;
                     break;
                 case KeyEvent.VK_A:
-                    x -= 10;
+                    direccionX = -10;
+                    direccionY = 0;
                     break;
                 case KeyEvent.VK_S:
-                    y += 10;
+                    direccionX = 0;
+                    direccionY = 10;
                     break;
                 case KeyEvent.VK_W:
-                    y -= 10;
+                    direccionX = 0;
+                    direccionY = -10;
                     break;
             }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    
+    private void moverCubito() {
+        if (!llegoMeta) {
+            int x = cubito.getX() + direccionX;
+            int y = cubito.getY() + direccionY;
 
             Rectangle posicion = new Rectangle(x, y, cubito.getAnchura(), cubito.getAltura());
             boolean colision = false;
@@ -218,7 +230,7 @@ public class Ventana extends JFrame implements KeyListener {
             if (posicion.intersects(meta)) {
                 llegoMeta = true;
                 long tiempo = System.currentTimeMillis() - tiempoInicio;
-                double tiempoSegundos = tiempo / 1000.0; 
+                double tiempoSegundos = tiempo / 1000.0;
                 JOptionPane.showMessageDialog(this, "¡Has llegado a la meta en " + tiempoSegundos + " segundos!");
             }
 
@@ -226,7 +238,20 @@ public class Ventana extends JFrame implements KeyListener {
         }
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
+    private void moverContinuamente() {
+        Timer timer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moverCubito();
+            }
+        });
+        timer.start();
+    }
+
+    public static void main(String[] args) {
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
+        ventana.moverContinuamente();
     }
 }
+
